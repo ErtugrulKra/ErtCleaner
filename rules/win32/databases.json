@@ -1,0 +1,190 @@
+{
+  "$schema": "../schema/rules.schema.json",
+  "type": "databases",
+  "sharedDbFileSets": {
+    "chromium": [
+      "History",
+      "Cookies",
+      "Network/Cookies",
+      "Favicons",
+      "Top Sites",
+      "Web Data",
+      "Shortcuts"
+    ],
+    "firefox": [
+      "places.sqlite",
+      "cookies.sqlite",
+      "favicons.sqlite",
+      "formhistory.sqlite",
+      "webappsstore.sqlite",
+      "content-prefs.sqlite"
+    ]
+  },
+  "targets": [
+    {
+      "label": "Google Chrome",
+      "basePath": "${LOCALAPPDATA}/Google/Chrome/User Data",
+      "dbFiles": "$chromium",
+      "multiProfile": true,
+      "description": "Chrome gezinme geçmişi, çerezler, site simgeleri, otomatik doldurma ve kısayol veritabanları"
+    },
+    {
+      "label": "Microsoft Edge",
+      "basePath": "${LOCALAPPDATA}/Microsoft/Edge/User Data",
+      "dbFiles": "$chromium",
+      "multiProfile": true,
+      "description": "Edge gezinme geçmişi, çerezler, site simgeleri, otomatik doldurma ve kısayol veritabanları"
+    },
+    {
+      "label": "Brave",
+      "basePath": "${LOCALAPPDATA}/BraveSoftware/Brave-Browser/User Data",
+      "dbFiles": "$chromium",
+      "multiProfile": true,
+      "description": "Brave gezinme geçmişi, çerezler, site simgeleri, otomatik doldurma ve kısayol veritabanları"
+    },
+    {
+      "label": "Vivaldi",
+      "basePath": "${LOCALAPPDATA}/Vivaldi/User Data",
+      "dbFiles": "$chromium",
+      "multiProfile": true,
+      "description": "Vivaldi gezinme geçmişi, çerezler, site simgeleri, otomatik doldurma ve kısayol veritabanları"
+    },
+    {
+      "label": "Opera",
+      "basePath": "${APPDATA}/Opera Software/Opera Stable",
+      "dbFiles": "$chromium",
+      "description": "Opera gezinme geçmişi, çerezler, site simgeleri, otomatik doldurma ve kısayol veritabanları"
+    },
+    {
+      "label": "Opera GX",
+      "basePath": "${APPDATA}/Opera Software/Opera GX Stable",
+      "dbFiles": "$chromium",
+      "description": "Opera GX gezinme geçmişi, çerezler, site simgeleri, otomatik doldurma ve kısayol veritabanları"
+    },
+    {
+      "label": "Arc",
+      "basePath": "${LOCALAPPDATA}/Arc/User Data",
+      "dbFiles": "$chromium",
+      "multiProfile": true,
+      "description": "Arc gezinme geçmişi, çerezler, site simgeleri, otomatik doldurma ve kısayol veritabanları"
+    },
+    {
+      "label": "Chromium",
+      "basePath": "${LOCALAPPDATA}/Chromium/User Data",
+      "dbFiles": "$chromium",
+      "multiProfile": true,
+      "description": "Chromium gezinme geçmişi, çerezler, site simgeleri, otomatik doldurma ve kısayol veritabanları"
+    },
+    {
+      "label": "Thorium",
+      "basePath": "${LOCALAPPDATA}/Thorium/User Data",
+      "dbFiles": "$chromium",
+      "multiProfile": true,
+      "description": "Thorium gezinme geçmişi, çerezler, site simgeleri, otomatik doldurma ve kısayol veritabanları"
+    },
+    {
+      "label": "Supermium",
+      "basePath": "${LOCALAPPDATA}/Supermium/User Data",
+      "dbFiles": "$chromium",
+      "multiProfile": true,
+      "description": "Supermium gezinme geçmişi, çerezler, site simgeleri, otomatik doldurma ve kısayol veritabanları"
+    },
+    {
+      "label": "Helium",
+      "basePath": "${LOCALAPPDATA}/imput/Helium/User Data",
+      "dbFiles": "$chromium",
+      "multiProfile": true,
+      "description": "Helium gezinme geçmişi, çerezler, site simgeleri, otomatik doldurma ve kısayol veritabanları"
+    },
+    {
+      "label": "Cromite",
+      "basePath": "${LOCALAPPDATA}/Cromite/User Data",
+      "dbFiles": "$chromium",
+      "multiProfile": true,
+      "description": "Cromite gezinme geçmişi, çerezler, site simgeleri, otomatik doldurma ve kısayol veritabanları"
+    },
+    {
+      "label": "Firefox",
+      "basePath": "${APPDATA}/Mozilla/Firefox/Profiles",
+      "dbFiles": "$firefox",
+      "multiProfile": true,
+      "profilePattern": [
+        "*.default*",
+        "*.dev-edition*"
+      ],
+      "description": "Firefox gezinme geçmişi, çerezler, site simgeleri, form verileri ve site tercihleri"
+    },
+    {
+      "label": "Discord",
+      "basePath": "${APPDATA}/discord",
+      "dbFiles": [
+        "Network/Cookies"
+      ],
+      "description": "Discord ağ çerezleri veritabanı"
+    },
+    {
+      "label": "Slack",
+      "basePath": "${APPDATA}/Slack",
+      "dbFiles": [
+        "Network/Cookies"
+      ],
+      "description": "Slack ağ çerezleri veritabanı"
+    },
+    {
+      "label": "Microsoft Teams",
+      "basePath": "${APPDATA}/Microsoft/Teams",
+      "dbFiles": [
+        "Network/Cookies"
+      ],
+      "description": "Microsoft Teams ağ çerezleri veritabanı"
+    },
+    {
+      "label": "VS Code",
+      "basePath": "${APPDATA}/Code",
+      "dbFiles": [
+        "Network/Cookies",
+        "User/globalStorage/state.vscdb"
+      ],
+      "description": "VS Code ağ çerezleri ve genel durum veritabanı"
+    },
+    {
+      "label": "Cursor IDE",
+      "basePath": "${APPDATA}/Cursor",
+      "dbFiles": [
+        "Network/Cookies",
+        "User/globalStorage/state.vscdb"
+      ],
+      "description": "Cursor IDE ağ çerezleri ve genel durum veritabanı"
+    },
+    {
+      "label": "Figma",
+      "basePath": "${APPDATA}/Figma",
+      "dbFiles": [
+        "Network/Cookies"
+      ],
+      "description": "Figma ağ çerezleri veritabanı"
+    },
+    {
+      "label": "Postman",
+      "basePath": "${APPDATA}/Postman",
+      "dbFiles": [
+        "Network/Cookies"
+      ],
+      "description": "Postman ağ çerezleri veritabanı"
+    },
+    {
+      "label": "Thunderbird",
+      "basePath": "${APPDATA}/Thunderbird/Profiles",
+      "dbFiles": [
+        "global-messages-db.sqlite",
+        "places.sqlite",
+        "cookies.sqlite"
+      ],
+      "multiProfile": true,
+      "profilePattern": [
+        "*.default*"
+      ],
+      "description": "Thunderbird genel ileti dizini, places ve çerez veritabanları"
+    }
+  ]
+}

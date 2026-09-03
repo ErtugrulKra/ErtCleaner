@@ -1,0 +1,43 @@
+{
+  "$schema": "../schema/rules.schema.json",
+  "type": "gpu-cache",
+  "apps": [
+    {
+      "id": "nvidia",
+      "name": "NVIDIA Shader Cache",
+      "paths": [
+        "${LOCALAPPDATA}/NVIDIA/GLCache",
+        "${LOCALAPPDATA}/NVIDIA/DXCache",
+        "${LOCALAPPDATA}/NVIDIA Corporation/NV_Cache",
+        "${PROGRAMDATA}/NVIDIA Corporation/NV_Cache"
+      ],
+      "description": "OpenGL, DirectX ve Vulkan için NVIDIA derlenmiş gölgelendirici önbelleği; oyun başına otomatik yeniden oluşturulur"
+    },
+    {
+      "id": "amd",
+      "name": "AMD Shader Cache",
+      "paths": [
+        "${LOCALAPPDATA}/AMD/DxCache",
+        "${LOCALAPPDATA}/AMD/GLCache",
+        "${LOCALAPPDATA}/AMD/VkCache"
+      ],
+      "description": "DirectX, OpenGL ve Vulkan için AMD derlenmiş gölgelendirici önbelleği; oyun başına otomatik yeniden oluşturulur"
+    },
+    {
+      "id": "intel",
+      "name": "Intel Shader Cache",
+      "paths": [
+        "${LOCALAPPDATA}/Intel/ShaderCache"
+      ],
+      "description": "Intel GPU derlenmiş gölgelendirici önbelleği; gerektiğinde otomatik yeniden oluşturulur"
+    },
+    {
+      "id": "unity-cache",
+      "name": "Unity Shader Cache",
+      "paths": [
+        "${LOCALAPPDATA}/Unity/cache"
+      ],
+      "description": "Unity motoru derlenmiş gölgelendirici önbelleği; Unity projeleri açıldığında yeniden oluşturulur"
+    }
+  ]
+}

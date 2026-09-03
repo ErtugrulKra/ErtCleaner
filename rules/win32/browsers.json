@@ -1,0 +1,157 @@
+{
+  "$schema": "../schema/rules.schema.json",
+  "type": "browsers",
+  "chromiumCacheDirs": {
+    "profile": [
+      {
+        "dir": "Cache/Cache_Data",
+        "label": "Önbellek"
+      },
+      {
+        "dir": "Code Cache",
+        "label": "Kod Önbelleği"
+      },
+      {
+        "dir": "GPUCache",
+        "label": "GPU Önbelleği"
+      },
+      {
+        "dir": "Service Worker/CacheStorage",
+        "label": "Service Worker Önbelleği"
+      },
+      {
+        "dir": "Shared Dictionary/cache",
+        "label": "Paylaşılan Sözlük Önbelleği",
+        "description": "Chromium paylaşılan sıkıştırma sözlüğü önbelleği; indirilen içerik gerektiğinde yeniden oluşturulur"
+      },
+      {
+        "dir": "DawnWebGPUCache",
+        "label": "WebGPU Gölgelendirici Önbelleği",
+        "description": "Dawn'ın derlenmiş WebGPU gölgelendiricileri — gerektiğinde yeniden oluşturulur"
+      },
+      {
+        "dir": "DawnGraphiteCache",
+        "label": "Graphite Gölgelendirici Önbelleği",
+        "description": "Dawn/Skia Graphite işlem hattı önbelleği — gerektiğinde yeniden oluşturulur"
+      }
+    ],
+    "shared": [
+      {
+        "dir": "component_crx_cache",
+        "label": "Bileşen Uzantı Önbelleği",
+        "description": "Bileşen uzantıları için indirilmiş CRX paketleri — sonraki güncelleme denetiminde yeniden alınır, yüklü uzantıların kendisi değil"
+      },
+      {
+        "dir": "extensions_crx_cache",
+        "label": "Uzantı Güncelleme Önbelleği",
+        "description": "Kurulum bekleyen indirilmiş CRX paketleri — sonraki güncelleme denetiminde yeniden alınır"
+      },
+      {
+        "dir": "GrShaderCache",
+        "label": "Skia Gölgelendirici Önbelleği",
+        "description": "Skia GPU gölgelendirici önbelleği — gerektiğinde yeniden oluşturulur"
+      },
+      {
+        "dir": "ShaderCache",
+        "label": "Gölgelendirici Önbelleği",
+        "description": "Eski GPU gölgelendirici önbelleği — gerektiğinde yeniden oluşturulur"
+      },
+      {
+        "dir": "GraphiteDawnCache",
+        "label": "Graphite İşlem Hattı Önbelleği",
+        "description": "Daha yeni Chromium sürümlerinin Graphite işlem hattı önbelleğini tuttuğu yer — gerektiğinde yeniden oluşturulur"
+      },
+      {
+        "dir": "GPUPersistentCache",
+        "label": "Kalıcı GPU Önbelleği",
+        "description": "Daha yeni Chromium sürümlerinin disk üzerindeki GPU önbelleğini tuttuğu yer — gerektiğinde yeniden oluşturulur"
+      },
+      {
+        "dir": "PnaclTranslationCache",
+        "label": "PNaCl Çeviri Önbelleği",
+        "description": "Çevrilmiş PNaCl modülleri — gerektiğinde yeniden oluşturulur"
+      }
+    ]
+  },
+  "chromium": [
+    {
+      "key": "chrome",
+      "base": "${LOCALAPPDATA}/Google/Chrome/User Data"
+    },
+    {
+      "key": "edge",
+      "base": "${LOCALAPPDATA}/Microsoft/Edge/User Data"
+    },
+    {
+      "key": "brave",
+      "base": "${LOCALAPPDATA}/BraveSoftware/Brave-Browser/User Data"
+    },
+    {
+      "key": "opera",
+      "base": "${APPDATA}/Opera Software/Opera Stable"
+    },
+    {
+      "key": "operaGX",
+      "base": "${APPDATA}/Opera Software/Opera GX Stable"
+    },
+    {
+      "key": "vivaldi",
+      "base": "${LOCALAPPDATA}/Vivaldi/User Data"
+    },
+    {
+      "key": "arc",
+      "base": "${LOCALAPPDATA}/Arc/User Data"
+    },
+    {
+      "key": "chromium",
+      "base": "${LOCALAPPDATA}/Chromium/User Data"
+    },
+    {
+      "key": "thorium",
+      "base": "${LOCALAPPDATA}/Thorium/User Data"
+    },
+    {
+      "key": "supermium",
+      "base": "${LOCALAPPDATA}/Supermium/User Data"
+    },
+    {
+      "key": "helium",
+      "base": "${LOCALAPPDATA}/imput/Helium/User Data"
+    },
+    {
+      "key": "cromite",
+      "base": "${LOCALAPPDATA}/Cromite/User Data"
+    },
+    {
+      "key": "catsxp",
+      "base": "${LOCALAPPDATA}/ArcSoft/CatsXP/User Data"
+    }
+  ],
+  "firefox": {
+    "base": "${APPDATA}/Mozilla/Firefox/Profiles",
+    "cache": "${LOCALAPPDATA}/Mozilla/Firefox/Profiles"
+  },
+  "firefoxForks": [
+    {
+      "key": "librewolf",
+      "base": "${APPDATA}/LibreWolf/Profiles",
+      "cache": "${LOCALAPPDATA}/LibreWolf/Profiles"
+    },
+    {
+      "key": "waterfox",
+      "base": "${APPDATA}/Waterfox/Profiles",
+      "cache": "${LOCALAPPDATA}/Waterfox/Profiles"
+    },
+    {
+      "key": "floorp",
+      "base": "${APPDATA}/Floorp/Profiles",
+      "cache": "${LOCALAPPDATA}/Floorp/Profiles"
+    },
+    {
+      "key": "zen",
+      "base": "${APPDATA}/Zen/Profiles",
+      "cache": "${LOCALAPPDATA}/Zen/Profiles"
+    }
+  ],
+  "safari": null
+}

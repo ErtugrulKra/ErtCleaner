@@ -1,0 +1,325 @@
+{
+  "$schema": "../schema/rules.schema.json",
+  "type": "system",
+  "cleanTargets": [
+    {
+      "path": "${LOCALAPPDATA}/Temp",
+      "subcategory": "Kullanıcı Geçici Dosyaları",
+      "deepRecencyCheck": true,
+      "description": "Uygulamalar ve geçerli kullanıcı oturumu tarafından oluşturulan geçici dosyalar; son alt öğeler temizlik sırasında korunur"
+    },
+    {
+      "path": "${WINDIR}/Temp",
+      "subcategory": "Sistem Geçici Dosyaları",
+      "description": "Windows hizmetleri ve sistem işlemleri tarafından oluşturulan geçici dosyalar"
+    },
+    {
+      "path": "${WINDIR}/Prefetch",
+      "subcategory": "Prefetch Verileri",
+      "needsAdmin": true,
+      "description": "Program açılışını hızlandırmak için kullanılan uygulama başlatma prefetch dosyaları"
+    },
+    {
+      "path": "${WINDIR}/Logs",
+      "subcategory": "Windows Günlükleri",
+      "needsAdmin": true,
+      "description": "CBS ve DISM günlükleri dahil Windows sistem ve bileşen günlük dosyaları"
+    },
+    {
+      "path": "${WINDIR}/Panther",
+      "subcategory": "Kurulum Günlükleri",
+      "needsAdmin": true,
+      "description": "Windows kurulum ve yükseltme işlemlerinden günlük dosyaları"
+    },
+    {
+      "path": "${LOCALAPPDATA}/Microsoft/Windows/Explorer",
+      "subcategory": "Küçük Resim ve Simge Önbelleği",
+      "description": "Dosya Gezgini için önbelleğe alınmış küçük resimler ve simgeler; gerektiğinde otomatik yeniden oluşturulur"
+    },
+    {
+      "path": "${WINDIR}/ServiceProfiles/LocalService/AppData/Local/FontCache",
+      "subcategory": "Yazı Tipi Önbelleği",
+      "needsAdmin": true,
+      "description": "Önbelleğe alınmış yazı tipi işleme verileri; Yazı Tipi Önbelleği Hizmeti tarafından otomatik yeniden oluşturulur"
+    },
+    {
+      "path": "${LOCALAPPDATA}/D3DSCache",
+      "subcategory": "DirectX Gölgelendirici Önbelleği",
+      "description": "Oyun ve uygulama yükleme sürelerini azaltmak için kullanılan derlenmiş DirectX gölgelendirici önbelleği"
+    },
+    {
+      "path": "${LOCALAPPDATA}/Microsoft/Windows/INetCache",
+      "subcategory": "İnternet Önbelleği",
+      "description": "Internet Explorer ve Windows sistem bileşenlerinden önbelleğe alınmış web içeriği"
+    },
+    {
+      "path": "${WINDIR}/SoftwareDistribution/Download",
+      "subcategory": "Windows Update Önbelleği",
+      "needsAdmin": true,
+      "description": "İndirilmiş Windows Update paketleri (yeniden indirilmesi gereken bekleyen güncellemeleri içerebilir)"
+    },
+    {
+      "path": "${WINDIR}/SoftwareDistribution/DeliveryOptimization",
+      "subcategory": "Teslimat Optimizasyonu Önbelleği",
+      "needsAdmin": true,
+      "description": "Eşler arası teslimat optimizasyonu için kullanılan önbelleğe alınmış güncelleme dosyaları"
+    },
+    {
+      "path": "${LOCALAPPDATA}/Microsoft/Windows/WER",
+      "subcategory": "Hata Raporları",
+      "description": "Geçerli kullanıcı için Windows Hata Raporlama kilitlenme ve sorun raporları"
+    },
+    {
+      "path": "${PROGRAMDATA}/Microsoft/Windows/WER",
+      "subcategory": "Sistem Hata Raporları",
+      "needsAdmin": true,
+      "description": "Sistem genelinde Windows Hata Raporlama kilitlenme ve sorun raporları"
+    },
+    {
+      "path": "${LOCALAPPDATA}/CrashDumps",
+      "subcategory": "Kilitlenme Dökümleri",
+      "description": "Kullanıcı modu uygulama kilitlenme dökümü dosyaları"
+    },
+    {
+      "path": "${WINDIR}/Minidump",
+      "subcategory": "Minidöküm Dosyaları",
+      "needsAdmin": true,
+      "description": "Mavi ekran kilitlenmeleri sırasında oluşturulan çekirdek minidöküm dosyaları"
+    },
+    {
+      "path": "${WINDIR}/Installer/$PatchCache$",
+      "subcategory": "Yükleyici Yama Önbelleği",
+      "needsAdmin": true,
+      "description": "Kaldırma geri alma için kullanılan önbelleğe alınmış MSI yama temel dosyaları"
+    },
+    {
+      "path": "${WINDIR}/System32/winevt/Logs",
+      "subcategory": "Olay Günlüğü Arşivleri",
+      "needsAdmin": true,
+      "description": "Arşivlenmiş Windows Olay Günlüğü dosyaları (.evtx)"
+    },
+    {
+      "path": "${PROGRAMDATA}/Microsoft/Windows Defender/Scans/History",
+      "subcategory": "Defender Tarama Geçmişi",
+      "needsAdmin": true,
+      "description": "Windows Defender'dan geçmiş tarama sonuçları ve algılama kayıtları"
+    },
+    {
+      "path": "C:/Windows.old",
+      "subcategory": "Önceki Windows Kurulumu",
+      "needsAdmin": true,
+      "description": "Geri alma için tutulan önceki Windows kurulumunun dosyaları; çok büyük olabilir"
+    },
+    {
+      "path": "${LOCALAPPDATA}/Microsoft/CLR_v4.0/UsageLogs",
+      "subcategory": ".NET Kullanım Günlükleri",
+      "description": ".NET Framework çalışma zamanı (64 bit) tarafından oluşturulan kullanım telemetrisi günlükleri"
+    },
+    {
+      "path": "${LOCALAPPDATA}/Microsoft/CLR_v4.0_32/UsageLogs",
+      "subcategory": ".NET Kullanım Günlükleri (32 bit)",
+      "description": ".NET Framework çalışma zamanı (32 bit) tarafından oluşturulan kullanım telemetrisi günlükleri"
+    },
+    {
+      "path": "${LOCALAPPDATA}/Microsoft/Terminal Server Client/Cache",
+      "subcategory": "RDP Bit Eşlem Önbelleği",
+      "description": "Uzak Masaüstü oturumlarından önbelleğe alınmış bit eşlem döşemeleri"
+    },
+    {
+      "path": "${WINDIR}/debug",
+      "subcategory": "Windows Hata Ayıklama Günlükleri",
+      "needsAdmin": true,
+      "description": "Netlogon ve WIA gibi Windows hizmetleri tarafından oluşturulan hata ayıklama günlük dosyaları"
+    },
+    {
+      "path": "${WINDIR}/ServiceProfiles/NetworkService/AppData/Local/Temp",
+      "subcategory": "Ağ Hizmeti Geçici Dosyaları",
+      "needsAdmin": true,
+      "description": "Ağ Hizmeti sistem hesabı tarafından oluşturulan geçici dosyalar"
+    },
+    {
+      "path": "${LOCALAPPDATA}/Microsoft/Windows/Caches",
+      "subcategory": "Windows Önbellekleri",
+      "description": "Windows kabuk bileşenleri tarafından kullanılan genel amaçlı önbellekler"
+    },
+    {
+      "path": "${PROGRAMDATA}/Microsoft/Windows Defender/Support",
+      "subcategory": "Defender Destek Günlükleri",
+      "needsAdmin": true,
+      "description": "Sorun giderme için kullanılan Windows Defender tanılama ve destek günlük dosyaları"
+    },
+    {
+      "path": "${PROGRAMDATA}/Microsoft/Windows Defender/Scans/MetaStore",
+      "subcategory": "Defender MetaStore",
+      "needsAdmin": true,
+      "description": "Windows Defender tarama meta verileri ve algılama imzası önbelleği"
+    },
+    {
+      "path": "${WINDIR}/ServiceProfiles/LocalService/AppData/Local/Temp",
+      "subcategory": "Yerel Hizmet Geçici Dosyaları",
+      "needsAdmin": true,
+      "description": "Yerel Hizmet sistem hesabı tarafından oluşturulan geçici dosyalar"
+    },
+    {
+      "path": "${WINDIR}/tracing",
+      "subcategory": "Sistem İzleme Günlükleri",
+      "needsAdmin": true,
+      "description": "Ağ ve sistem bileşeni tanılama izleme günlük dosyaları"
+    },
+    {
+      "path": "${WINDIR}/SoftwareDistribution/DataStore/Logs",
+      "subcategory": "Windows Update Veritabanı Günlükleri",
+      "needsAdmin": true,
+      "description": "Windows Update veritabanı için işlem günlük dosyaları"
+    },
+    {
+      "path": "${LOCALAPPDATA}/Microsoft/Windows/DeliveryOptimization",
+      "subcategory": "Teslimat Optimizasyonu Kullanıcı Önbelleği",
+      "description": "Windows Update eş paylaşımı için kullanıcı başına Teslimat Optimizasyonu önbellek dosyaları"
+    },
+    {
+      "path": "${PROGRAMDATA}/Microsoft/RAC/PublishedData",
+      "subcategory": "Güvenilirlik İzleyicisi Verileri",
+      "needsAdmin": true,
+      "description": "Güvenilirlik İzleyicisi raporları için toplanan Güvenilirlik Analizi Bileşeni verileri"
+    },
+    {
+      "path": "${PROGRAMDATA}/Microsoft/Search/Data/Applications/Windows/GatherLogs",
+      "subcategory": "Windows Arama Günlükleri",
+      "needsAdmin": true,
+      "description": "Windows Arama dizinleme hizmetinden toplama günlük dosyaları"
+    },
+    {
+      "path": "${PROGRAMDATA}/Microsoft/Diagnosis/ETLLogs",
+      "subcategory": "Tanılama ETL Günlükleri",
+      "needsAdmin": true,
+      "description": "Windows tanılama verisi toplamadan Event Trace Log dosyaları"
+    },
+    {
+      "path": "${PROGRAMDATA}/Microsoft/Windows/Power Efficiency Diagnostics",
+      "subcategory": "Güç Verimliliği Raporları",
+      "needsAdmin": true,
+      "description": "powercfg tarafından oluşturulan enerji verimliliği tanılama raporları"
+    },
+    {
+      "path": "${WINDIR}/LiveKernelReports",
+      "subcategory": "Çekirdek Canlı Döküm Dosyaları",
+      "needsAdmin": true,
+      "description": "Kilitlenme olmadan anormal sistem işlemleri sırasında oluşturulan çekirdek canlı döküm dosyaları"
+    },
+    {
+      "path": "${WINDIR}/ServiceProfiles/LocalSystem/AppData/Local/Temp",
+      "subcategory": "Yerel Sistem Geçici Dosyaları",
+      "needsAdmin": true,
+      "description": "Yerel Sistem hizmet hesabı tarafından oluşturulan geçici dosyalar"
+    },
+    {
+      "path": "${PROGRAMDATA}/Microsoft/Windows Defender/Network Inspection System/Support",
+      "subcategory": "Defender NIS Günlükleri",
+      "needsAdmin": true,
+      "description": "Windows Defender Ağ Denetim Hizmeti tanılama ve destek günlükleri"
+    },
+    {
+      "path": "${PROGRAMDATA}/Microsoft/Windows Defender/Scans/RtSigs",
+      "subcategory": "Defender İzleme Dosyaları",
+      "needsAdmin": true,
+      "description": "Windows Defender gerçek zamanlı imza izi önişlemci dosyaları"
+    },
+    {
+      "path": "${WINDIR}/System32/LogFiles/Firewall",
+      "subcategory": "Güvenlik Duvarı Günlükleri",
+      "needsAdmin": true,
+      "description": "İzin verilen ve engellenen bağlantıları kaydeden Windows Güvenlik Duvarı etkinlik günlük dosyaları"
+    },
+    {
+      "path": "${WINDIR}/Performance/WinSAT/DataStore",
+      "subcategory": "WinSAT Sonuçları",
+      "needsAdmin": true,
+      "description": "Windows Sistem Değerlendirme Aracı kıyaslama sonuçları ve performans verileri"
+    },
+    {
+      "path": "${WINDIR}/AppCompat/Programs",
+      "subcategory": "Uygulama Uyumluluk Önbelleği",
+      "needsAdmin": true,
+      "description": "Uygulama uyumluluk analizi verileri ve program envanter önbelleği"
+    },
+    {
+      "path": "${PROGRAMDATA}/Microsoft/Windows/RUXIM",
+      "subcategory": "Güncelleme UX Günlükleri",
+      "needsAdmin": true,
+      "description": "Windows Update bildirimlerinden Yeniden Kullanılabilir UX Etkileşim Yöneticisi günlükleri"
+    },
+    {
+      "path": "${WINDIR}/ServiceProfiles/LocalService/AppData/LocalLow/Microsoft/CryptnetUrlCache",
+      "subcategory": "Yerel Hizmet Sertifika Önbelleği",
+      "needsAdmin": true,
+      "description": "Yerel Hizmet hesabı için önbelleğe alınmış sertifika iptal listeleri ve OCSP yanıtları"
+    },
+    {
+      "path": "${WINDIR}/ServiceProfiles/NetworkService/AppData/LocalLow/Microsoft/CryptnetUrlCache",
+      "subcategory": "Ağ Hizmeti Sertifika Önbelleği",
+      "needsAdmin": true,
+      "description": "Ağ Hizmeti hesabı için önbelleğe alınmış sertifika iptal listeleri ve OCSP yanıtları"
+    },
+    {
+      "path": "${WINDIR}/System32/config/systemprofile/AppData/LocalLow/Microsoft/CryptnetUrlCache",
+      "subcategory": "Sistem Sertifika Önbelleği",
+      "needsAdmin": true,
+      "description": "Yerel Sistem hesabı için önbelleğe alınmış sertifika iptal listeleri ve OCSP yanıtları"
+    },
+    {
+      "path": "${WINDIR}/ServiceProfiles/LocalService/AppData/Local/Microsoft/Windows/qWave",
+      "subcategory": "qWAVE Önbelleği",
+      "needsAdmin": true,
+      "description": "Quality Windows Audio/Video Experience önbelleğe alınmış çoklu ortam kalite verileri"
+    },
+    {
+      "path": "${WINDIR}/ServiceProfiles/LocalService/AppData/Local/PeerNetworking",
+      "subcategory": "Eş Ağ İzleri",
+      "needsAdmin": true,
+      "description": "Eşler arası ağ grubu verileri ve bağlantı izleri"
+    },
+    {
+      "path": "${WINDIR}/System32/LogFiles/WMI",
+      "subcategory": "WMI İzleme Günlükleri",
+      "needsAdmin": true,
+      "description": "Windows Yönetim Araçları olay izleme günlük dosyaları"
+    },
+    {
+      "path": "${WINDIR}/System32/LogFiles/HTTPERR",
+      "subcategory": "HTTP Hata Günlükleri",
+      "needsAdmin": true,
+      "description": "Windows HTTP hizmetinden HTTP.sys hata günlük dosyaları"
+    },
+    {
+      "path": "${LOCALAPPDATA}/ElevatedDiagnostics",
+      "subcategory": "Yükseltilmiş Tanılama",
+      "description": "Yükseltilmiş sistem tanılama sorun gidericilerinden sonuçlar"
+    },
+    {
+      "path": "${WINDIR}/System32/LogFiles/setupcln",
+      "subcategory": "Kurulum Temizlik Günlükleri",
+      "needsAdmin": true,
+      "description": "Windows kurulum temizlik işlemlerinden günlük dosyaları"
+    },
+    {
+      "path": "${PROGRAMDATA}/USOShared/Logs",
+      "subcategory": "Güncelleme Düzenleyicisi Günlükleri",
+      "needsAdmin": true,
+      "deepRecencyCheck": true,
+      "description": "Windows Update Orchestrator tanılama günlükleri; etkin ve son alt öğeler temizlik sırasında korunur"
+    }
+  ],
+  "singleFileTargets": [
+    {
+      "path": "${WINDIR}/MEMORY.DMP",
+      "subcategory": "Tam Bellek Dökümü",
+      "description": "Sistem kilitlenmesi sırasında oluşturulan tam bellek dökümü dosyası; çoğu zaman birkaç GB"
+    },
+    {
+      "path": "${WINDIR}/System32/energy-report.html",
+      "subcategory": "Güç Verimliliği Raporu",
+      "description": "powercfg /energy tarafından oluşturulan enerji verimliliği tanılama raporu"
+    }
+  ]
+}

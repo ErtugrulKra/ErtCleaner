@@ -1,0 +1,320 @@
+// ─── Rules Loader ─────────────────────────────────────────────
+// Reads JSON rule files, resolves template variables (e.g. ${HOME}),
+// normalises path separators, and returns a partial PlatformPaths
+// containing only the cleaner-related methods.
+
+import { homedir, tmpdir } from 'os'
+import path from 'path'
+import type {
+  CleanTarget,
+  BrowserPathConfig,
+  BrowserPaths,
+  ChromiumCacheDir,
+  AppCacheDef,
+  DatabaseTarget,
+  DirectFileMatch,
+  RecursivePathMatch,
+} from '../platform/types'
+
+// ─── JSON type shapes (match the schema) ──────────────────────
+
+export interface SystemRulesJson {
+  type: 'system'
+  cleanTargets: Array<{
+    path: string
+    subcategory: string
+    needsAdmin?: boolean
+    childSubdir?: string
+    deepRecencyCheck?: boolean
+  }>
+  singleFileTargets?: Array<{ path: string; subcategory: string }>
+}
+
+export interface BrowserRulesJson {
+  type: 'browsers'
+  chromiumCacheDirs: {
+    profile: Array<{ dir: string; label: string }>
+    shared?: Array<{ dir: string; label: string }>
+  }
+  chromium: Array<{ key: string; base: string }>
+  firefox: { base: string; cache: string }
+  firefoxForks?: Array<{ key: string; base: string; cache: string }>
+  safari?: { cache: string } | null
+}
+
+export interface AppRulesJson {
+  type: 'apps' | 'gaming' | 'gpu-cache'
+  apps: Array<{
+    id: string
+    name: string
+    paths: string[]
+    group?: string
+    minAgeDays?: number
+    childSubdir?: string
+    recursiveMatch?: RecursivePathMatch
+    fileMatch?: DirectFileMatch
+  }>
+}
+
+export interface SteamRulesJson {
+  type: 'steam'
+  libraries: string[]
+  redistPatterns: string[]
+}
+
+export interface DatabaseRulesJson {
+  type: 'databases'
+  sharedDbFileSets?: Record<string, string[]>
+  targets: Array<{
+    label: string
+    basePath: string
+    dbFiles: string | string[]
+    multiProfile?: boolean
+    profilePattern?: string[]
+  }>
+}
+
+export interface MiscRulesJson {
+  type: 'misc'
+  protectedEventLogs?: string[]
+  trashPath?: string | null
+}
+
+export interface RulesJsonSet {
+  system: SystemRulesJson
+  browsers: BrowserRulesJson
+  apps: AppRulesJson
+  gaming: AppRulesJson
+  gpuCache: AppRulesJson
+  steam: SteamRulesJson
+  databases: DatabaseRulesJson
+  misc: MiscRulesJson
+}
+
+// ─── Cleaner-only subset of PlatformPaths ─────────────────────
+
+export interface CleanerPaths {
+  systemCleanTargets(): CleanTarget[]
+  singleFileCleanTargets(): { path: string; subcategory: string }[]
+  protectedEventLogs(): string[]
+  browserPaths(): BrowserPathConfig
+  appPaths(): AppCacheDef[]
+  gamingPaths(): AppCacheDef[]
+  gpuCachePaths(): AppCacheDef[]
+  steamLibraries(): string[]
+  steamRedistPatterns(): string[]
+  trashPath(): string | null
+  databaseOptimizeTargets(): DatabaseTarget[]
+}
+
+// ─── Variable maps ────────────────────────────────────────────
+
+function buildVariables(): Record<string, string> {
+  const HOME = homedir()
+  const sep = path.win32
+  const LOCALAPPDATA = process.env.LOCALAPPDATA || sep.join(HOME, 'AppData', 'Local')
+  const APPDATA = process.env.APPDATA || sep.join(HOME, 'AppData', 'Roaming')
+  return {
+    HOME,
+    LOCALAPPDATA,
+    APPDATA,
+    WINDIR: process.env.WINDIR || 'C:\\Windows',
+    PROGRAMDATA: process.env.ProgramData || 'C:\\ProgramData',
+    PROGRAMFILES: process.env.ProgramFiles || 'C:\\Program Files',
+    PROGRAMFILES_X86: process.env['ProgramFiles(x86)'] || 'C:\\Program Files (x86)',
+    TMPDIR: tmpdir(),
+  }
+}
+
+/** Replace ${VAR} references and convert JSON `/` separators to Windows `\\`. */
+export function resolvePath(raw: string, vars: Record<string, string>): string {
+  const resolved = raw.replace(/\$\{([A-Z0-9_]+)\}/g, (_match, name: string) => {
+    const val = vars[name]
+    if (val === undefined) throw new Error(`Unknown template variable \${${name}} in path: ${raw}`)
+    return val
+  })
+  return resolved.replace(/\//g, '\\')
+}
+
+function resolvePathArray(arr: string[], vars: Record<string, string>): string[] {
+  return arr.map((p) => resolvePath(p, vars))
+}
+
+// ─── Build CleanerPaths from JSON ─────────────────────────────
+
+export function buildCleanerPaths(json: RulesJsonSet): CleanerPaths {
+  const vars = buildVariables()
+
+  return {
+    systemCleanTargets(): CleanTarget[] {
+      return json.system.cleanTargets.map((t) => {
+        const target: CleanTarget = {
+          path: resolvePath(t.path, vars),
+          subcategory: t.subcategory,
+        }
+        if (t.needsAdmin) target.needsAdmin = true
+        if (t.childSubdir) target.childSubdir = t.childSubdir
+        if (t.deepRecencyCheck) target.deepRecencyCheck = true
+        return target
+      })
+    },
+
+    singleFileCleanTargets(): { path: string; subcategory: string }[] {
+      return (json.system.singleFileTargets || []).map((t) => ({
+        path: resolvePath(t.path, vars),
+        subcategory: t.subcategory,
+      }))
+    },
+
+    protectedEventLogs(): string[] {
+      return json.misc.protectedEventLogs || []
+    },
+
+    browserPaths(): BrowserPathConfig {
+      const dirs = json.browsers.chromiumCacheDirs
+      const resolveDirs = (list: Array<{ dir: string; label: string }>): ChromiumCacheDir[] =>
+        list.map((d) => ({ dir: resolvePath(d.dir, vars), label: d.label }))
+      const profileCaches = resolveDirs(dirs.profile)
+      const sharedCaches = resolveDirs(dirs.shared || [])
+
+      const config: Record<string, BrowserPaths> = {}
+      for (const browser of json.browsers.chromium) {
+        config[browser.key] = {
+          base: resolvePath(browser.base, vars),
+          profileCaches,
+          sharedCaches,
+        }
+      }
+
+      const firefoxResolved = {
+        base: resolvePath(json.browsers.firefox.base, vars),
+        cache: resolvePath(json.browsers.firefox.cache, vars),
+      }
+
+      const firefoxForks: Record<string, { base: string; cache: string }> = {}
+      for (const fork of json.browsers.firefoxForks || []) {
+        firefoxForks[fork.key] = {
+          base: resolvePath(fork.base, vars),
+          cache: resolvePath(fork.cache, vars),
+        }
+      }
+
+      const safariResolved = json.browsers.safari
+        ? { cache: resolvePath(json.browsers.safari.cache, vars) }
+        : null
+
+      return {
+        chrome: config.chrome,
+        edge: config.edge,
+        brave: config.brave,
+        opera: config.opera,
+        operaGX: config.operaGX,
+        vivaldi: config.vivaldi,
+        arc: config.arc,
+        chromium: config.chromium,
+        thorium: config.thorium,
+        supermium: config.supermium,
+        helium: config.helium,
+        cromite: config.cromite,
+        catsxp: config.catsxp,
+        firefox: firefoxResolved,
+        librewolf: firefoxForks.librewolf || { base: '', cache: '' },
+        waterfox: firefoxForks.waterfox || { base: '', cache: '' },
+        floorp: firefoxForks.floorp || { base: '', cache: '' },
+        zen: firefoxForks.zen || { base: '', cache: '' },
+        safari: safariResolved,
+      } as BrowserPathConfig
+    },
+
+    appPaths(): AppCacheDef[] {
+      return json.apps.apps.map((a) => {
+        const def: AppCacheDef = {
+          id: a.id,
+          name: a.name,
+          paths: resolvePathArray(a.paths, vars),
+        }
+        if (a.childSubdir) def.childSubdir = a.childSubdir
+        if (a.group) def.group = a.group
+        if (a.recursiveMatch) def.recursiveMatch = a.recursiveMatch
+        if (a.minAgeDays !== undefined) def.minAgeDays = a.minAgeDays
+        if (a.fileMatch) def.fileMatch = a.fileMatch
+        return def
+      })
+    },
+
+    gamingPaths(): AppCacheDef[] {
+      return json.gaming.apps.map((a) => {
+        const def: AppCacheDef = {
+          id: a.id,
+          name: a.name,
+          paths: resolvePathArray(a.paths, vars),
+        }
+        if (a.childSubdir) def.childSubdir = a.childSubdir
+        if (a.group) def.group = a.group
+        if (a.recursiveMatch) def.recursiveMatch = a.recursiveMatch
+        if (a.minAgeDays !== undefined) def.minAgeDays = a.minAgeDays
+        if (a.fileMatch) def.fileMatch = a.fileMatch
+        return def
+      })
+    },
+
+    gpuCachePaths(): AppCacheDef[] {
+      return json.gpuCache.apps.map((a) => {
+        const def: AppCacheDef = {
+          id: a.id,
+          name: a.name,
+          paths: resolvePathArray(a.paths, vars),
+        }
+        if (a.childSubdir) def.childSubdir = a.childSubdir
+        if (a.group) def.group = a.group
+        if (a.recursiveMatch) def.recursiveMatch = a.recursiveMatch
+        if (a.minAgeDays !== undefined) def.minAgeDays = a.minAgeDays
+        if (a.fileMatch) def.fileMatch = a.fileMatch
+        return def
+      })
+    },
+
+    steamLibraries(): string[] {
+      return resolvePathArray(json.steam.libraries, vars)
+    },
+
+    steamRedistPatterns(): string[] {
+      // Redist patterns may contain backslash-separated paths on win32
+      return json.steam.redistPatterns.map((p) => p.replace(/\//g, '\\'))
+    },
+
+    trashPath(): string | null {
+      const tp = json.misc.trashPath
+      if (tp == null) return null
+      return resolvePath(tp, vars)
+    },
+
+    databaseOptimizeTargets(): DatabaseTarget[] {
+      const shared = json.databases.sharedDbFileSets || {}
+      return json.databases.targets.map((t) => {
+        // Resolve dbFiles — either a $reference or an inline array
+        let dbFiles: string[]
+        if (typeof t.dbFiles === 'string') {
+          const key = t.dbFiles.slice(1) // strip leading $
+          const set = shared[key]
+          if (!set) throw new Error(`Unknown sharedDbFileSets reference '${t.dbFiles}' in database target '${t.label}'`)
+          dbFiles = set
+        } else {
+          dbFiles = t.dbFiles
+        }
+
+        // Resolve subdirectory separators in dbFiles (e.g. Network/Cookies)
+        dbFiles = dbFiles.map((f) => f.replace(/\//g, '\\'))
+
+        const target: DatabaseTarget = {
+          label: t.label,
+          basePath: resolvePath(t.basePath, vars),
+          dbFiles,
+        }
+        if (t.multiProfile) target.multiProfile = true
+        if (t.profilePattern) target.profilePattern = t.profilePattern
+        return target
+      })
+    },
+  }
+}

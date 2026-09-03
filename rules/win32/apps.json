@@ -1,0 +1,1428 @@
+{
+  "$schema": "../schema/rules.schema.json",
+  "type": "apps",
+  "apps": [
+    {
+      "id": "discord",
+      "name": "Discord",
+      "paths": [
+        "${APPDATA}/discord/Cache/Cache_Data",
+        "${APPDATA}/discord/Code Cache",
+        "${APPDATA}/discord/GPUCache",
+        "${APPDATA}/discord/logs"
+      ],
+      "description": "Discord Electron uygulama önbelleği, derlenmiş kod önbelleği, GPU önbelleği ve günlükler"
+    },
+    {
+      "id": "teams",
+      "name": "Microsoft Teams",
+      "paths": [
+        "${APPDATA}/Microsoft/Teams/Cache"
+      ],
+      "description": "Microsoft Teams önbelleğe alınmış web içeriği"
+    },
+    {
+      "id": "slack",
+      "name": "Slack",
+      "paths": [
+        "${APPDATA}/Slack/Cache/Cache_Data",
+        "${APPDATA}/Slack/Code Cache",
+        "${APPDATA}/Slack/GPUCache",
+        "${APPDATA}/Slack/logs"
+      ],
+      "description": "Slack Electron uygulama önbelleği, derlenmiş kod önbelleği, GPU önbelleği ve günlükler"
+    },
+    {
+      "id": "zoom",
+      "name": "Zoom",
+      "paths": [
+        "${APPDATA}/Zoom/data/Cache",
+        "${APPDATA}/Zoom/data/GPUCache",
+        "${APPDATA}/Zoom/data/logs",
+        "${APPDATA}/Zoom/logs"
+      ],
+      "description": "Zoom önbelleğe alınmış veriler, GPU önbelleği ve günlük dosyaları"
+    },
+    {
+      "id": "telegram",
+      "name": "Telegram",
+      "paths": [
+        "${APPDATA}/Telegram Desktop/tdata/user_data",
+        "${APPDATA}/Telegram Desktop/tdata/emoji"
+      ],
+      "description": "Telegram önbelleğe alınmış kullanıcı verileri ve emoji varlıkları"
+    },
+    {
+      "id": "vscode",
+      "name": "VS Code",
+      "paths": [
+        "${APPDATA}/Code/Cache/Cache_Data",
+        "${APPDATA}/Code/Code Cache",
+        "${APPDATA}/Code/GPUCache",
+        "${APPDATA}/Code/CachedData",
+        "${APPDATA}/Code/CachedExtensions",
+        "${APPDATA}/Code/logs"
+      ],
+      "description": "VS Code web, derlenmiş kod, GPU, uzantı ve günlük önbellekleri"
+    },
+    {
+      "id": "jetbrains",
+      "name": "JetBrains IDEs",
+      "paths": [
+        "${LOCALAPPDATA}/JetBrains"
+      ],
+      "childSubdir": "caches",
+      "description": "JetBrains IDE önbellekleri (IntelliJ, PyCharm, WebStorm vb.); yeniden başlatmada yeniden oluşturulur"
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify",
+      "paths": [
+        "${LOCALAPPDATA}/Spotify/Storage",
+        "${LOCALAPPDATA}/Spotify/Data"
+      ],
+      "description": "Spotify çevrimdışı depolama ve önbelleğe alınmış akış verileri"
+    },
+    {
+      "id": "obs",
+      "name": "OBS Studio",
+      "paths": [
+        "${APPDATA}/obs-studio/logs",
+        "${APPDATA}/obs-studio/profiler_data"
+      ],
+      "description": "OBS Studio günlük dosyaları ve performans profilleyici verileri"
+    },
+    {
+      "id": "adobe",
+      "name": "Adobe Creative Cloud",
+      "paths": [
+        "${LOCALAPPDATA}/Adobe/AcroCef/Cache",
+        "${APPDATA}/Adobe/Common/Media Cache Files",
+        "${APPDATA}/Adobe/Common/Media Cache"
+      ],
+      "description": "Adobe Acrobat CEF önbelleği ve Premiere, After Effects vb. tarafından kullanılan paylaşılan medya önbelleği"
+    },
+    {
+      "id": "npm",
+      "name": "npm Cache",
+      "paths": [
+        "${LOCALAPPDATA}/npm-cache",
+        "${APPDATA}/npm-cache"
+      ],
+      "description": "npm indirilmiş paket tarball'ları ve meta veri önbelleği; geçerli ve eski Windows konumlarını içerir"
+    },
+    {
+      "id": "yarn",
+      "name": "Yarn Cache",
+      "paths": [
+        "${LOCALAPPDATA}/Yarn/Cache"
+      ],
+      "description": "Yarn indirilmiş paket önbelleği (yarn cache clean bunu temizler)"
+    },
+    {
+      "id": "pnpm",
+      "name": "pnpm Store",
+      "paths": [
+        "${LOCALAPPDATA}/pnpm/store",
+        "${LOCALAPPDATA}/pnpm-cache",
+        "${LOCALAPPDATA}/pnpm-store",
+        "${HOME}/.pnpm-store"
+      ],
+      "description": "Geçerli ve eski Windows konumlarında pnpm içerik adresli paket depoları ve indirilmiş paket önbelleği"
+    },
+    {
+      "id": "bun",
+      "name": "Bun Cache",
+      "paths": [
+        "${LOCALAPPDATA}/.bun/install/cache"
+      ],
+      "description": "Bun indirilmiş paket önbelleği"
+    },
+    {
+      "id": "pip",
+      "name": "pip Cache",
+      "paths": [
+        "${LOCALAPPDATA}/pip/Cache"
+      ],
+      "description": "pip indirilmiş wheel ve kaynak dağıtım önbelleği"
+    },
+    {
+      "id": "nuget",
+      "name": "NuGet Cache",
+      "paths": [
+        "${LOCALAPPDATA}/NuGet/v3-cache",
+        "${LOCALAPPDATA}/NuGet/plugins-cache"
+      ],
+      "description": ".NET paket yönetimi için NuGet HTTP yanıt önbelleği ve eklenti önbelleği"
+    },
+    {
+      "id": "cargo",
+      "name": "Cargo/Rust Cache",
+      "paths": [
+        "${HOME}/.cargo/registry/cache",
+        "${HOME}/.cargo/registry/src"
+      ],
+      "description": "Cargo indirilmiş crate arşivleri ve çıkarılmış kaynak dosyaları"
+    },
+    {
+      "id": "go",
+      "name": "Go Module Cache",
+      "paths": [
+        "${HOME}/go/pkg/mod/cache"
+      ],
+      "description": "Go modül indirme önbelleği (go clean -modcache bunu temizler)"
+    },
+    {
+      "id": "gradle",
+      "name": "Gradle Cache",
+      "paths": [
+        "${HOME}/.gradle/caches",
+        "${HOME}/.gradle/daemon"
+      ],
+      "description": "Gradle derleme önbellekleri ve daemon günlük dosyaları"
+    },
+    {
+      "id": "maven",
+      "name": "Maven Cache",
+      "paths": [
+        "${HOME}/.m2/repository"
+      ],
+      "description": "İndirilmiş yapıtlar ve bağımlılıklar için Maven yerel deposu"
+    },
+    {
+      "id": "modern-mtr",
+      "name": "Modern MTR",
+      "paths": [
+        "${APPDATA}/Modern MTR/Cache/Cache_Data",
+        "${APPDATA}/Modern MTR/Code Cache",
+        "${APPDATA}/Modern MTR/GPUCache"
+      ],
+      "description": "Modern MTR web, derlenmiş kod ve GPU önbellekleri"
+    },
+    {
+      "id": "composer",
+      "name": "Composer Cache",
+      "paths": [
+        "${LOCALAPPDATA}/Composer/cache"
+      ],
+      "description": "Composer indirilmiş PHP paket önbelleği"
+    },
+    {
+      "id": "docker",
+      "name": "Docker Desktop",
+      "paths": [
+        "${APPDATA}/Docker Desktop/cache",
+        "${APPDATA}/Docker Desktop/Code Cache",
+        "${APPDATA}/Docker Desktop/GPUCache",
+        "${LOCALAPPDATA}/Docker/log/host",
+        "${LOCALAPPDATA}/Docker/log/vm"
+      ],
+      "minAgeDays": 1,
+      "description": "Docker Desktop Electron önbellekleri ve yerleşmiş ana bilgisayar/VM günlükleri; son bir günde değiştirilen dosyalar korunur"
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor IDE",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${APPDATA}/Cursor/Cache/Cache_Data",
+        "${APPDATA}/Cursor/Code Cache",
+        "${APPDATA}/Cursor/GPUCache",
+        "${APPDATA}/Cursor/CachedData",
+        "${APPDATA}/Cursor/CachedExtensions",
+        "${APPDATA}/Cursor/logs"
+      ],
+      "minAgeDays": 1,
+      "description": "Cursor IDE önbelleğe alınmış veriler, uzantılar, derlenmiş kod, GPU önbelleği ve yerleşmiş günlükler; projeler, geçmiş, oturumlar ve ayarlar korunur"
+    },
+    {
+      "id": "signal",
+      "name": "Signal Desktop",
+      "paths": [
+        "${APPDATA}/Signal/Cache/Cache_Data",
+        "${APPDATA}/Signal/GPUCache"
+      ],
+      "description": "Signal Desktop Electron uygulama önbelleği ve GPU önbelleği"
+    },
+    {
+      "id": "postman",
+      "name": "Postman",
+      "paths": [
+        "${APPDATA}/Postman/Cache/Cache_Data",
+        "${APPDATA}/Postman/GPUCache"
+      ],
+      "description": "Postman Electron uygulama önbelleği ve GPU önbelleği"
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "paths": [
+        "${APPDATA}/Figma/Cache/Cache_Data",
+        "${APPDATA}/Figma/GPUCache"
+      ],
+      "description": "Figma Desktop Electron uygulama önbelleği ve GPU önbelleği"
+    },
+    {
+      "id": "github-desktop",
+      "name": "GitHub Desktop",
+      "paths": [
+        "${APPDATA}/GitHub Desktop/Cache/Cache_Data",
+        "${APPDATA}/GitHub Desktop/GPUCache"
+      ],
+      "description": "GitHub Desktop Electron uygulama önbelleği ve GPU önbelleği"
+    },
+    {
+      "id": "vlc",
+      "name": "VLC",
+      "paths": [
+        "${APPDATA}/vlc/art_cache"
+      ],
+      "description": "VLC önbelleğe alınmış albüm kapakları ve medya küçük resimleri"
+    },
+    {
+      "id": "thunderbird",
+      "name": "Thunderbird",
+      "paths": [
+        "${LOCALAPPDATA}/Thunderbird/Profiles"
+      ],
+      "childSubdir": "cache2",
+      "description": "Thunderbird profil başına web içeriği önbelleği"
+    },
+    {
+      "id": "gimp",
+      "name": "GIMP",
+      "paths": [
+        "${APPDATA}/GIMP"
+      ],
+      "childSubdir": "tmp",
+      "description": "GIMP geçici takas ve çalışma dosyaları"
+    },
+    {
+      "id": "blender",
+      "name": "Blender",
+      "paths": [
+        "${APPDATA}/Blender Foundation/Blender"
+      ],
+      "childSubdir": "cache",
+      "description": "Sürüme göre Blender küçük resim ve betik önbelleği"
+    },
+    {
+      "id": "libreoffice",
+      "name": "LibreOffice",
+      "paths": [
+        "${APPDATA}/LibreOffice"
+      ],
+      "childSubdir": "cache",
+      "description": "Uzantı küçük resimleri dahil LibreOffice önbelleğe alınmış veriler"
+    },
+    {
+      "id": "teamviewer",
+      "name": "TeamViewer",
+      "paths": [
+        "${APPDATA}/TeamViewer/Logs"
+      ],
+      "description": "TeamViewer oturum günlük dosyaları"
+    },
+    {
+      "id": "google-earth",
+      "name": "Google Earth",
+      "paths": [
+        "${LOCALAPPDATA}/Google/GoogleEarth/Cache"
+      ],
+      "description": "Google Earth önbelleğe alınmış uydu görüntüsü döşemeleri"
+    },
+    {
+      "id": "inkscape",
+      "name": "Inkscape",
+      "paths": [
+        "${LOCALAPPDATA}/inkscape/cache"
+      ],
+      "description": "Inkscape yazı tipi ve işleme önbelleği"
+    },
+    {
+      "id": "krita",
+      "name": "Krita",
+      "paths": [
+        "${LOCALAPPDATA}/krita/cache"
+      ],
+      "description": "Krita kaynak ve işleme önbelleği"
+    },
+    {
+      "id": "filezilla",
+      "name": "FileZilla",
+      "paths": [
+        "${APPDATA}/FileZilla/cache"
+      ],
+      "description": "FileZilla dizin listeleme önbelleği"
+    },
+    {
+      "id": "fontconfig",
+      "name": "fontconfig",
+      "paths": [
+        "${LOCALAPPDATA}/fontconfig/cache"
+      ],
+      "description": "fontconfig tarafından oluşturulan yazı tipi keşif önbelleği; otomatik yeniden oluşturulur"
+    },
+    {
+      "id": "pidgin",
+      "name": "Pidgin",
+      "paths": [
+        "${APPDATA}/.purple/icons"
+      ],
+      "description": "Pidgin önbelleğe alınmış kişi simgeleri"
+    },
+    {
+      "id": "transmission",
+      "name": "Transmission",
+      "paths": [
+        "${LOCALAPPDATA}/Transmission/cache"
+      ],
+      "description": "Transmission BitTorrent istemci önbelleği"
+    },
+    {
+      "id": "android-studio",
+      "name": "Android Studio",
+      "paths": [
+        "${LOCALAPPDATA}/Google"
+      ],
+      "childSubdir": "caches",
+      "description": "Android Studio ve diğer Google ürünleri dahil Google uygulama önbellekleri"
+    },
+    {
+      "id": "conda",
+      "name": "Conda Package Cache",
+      "paths": [
+        "${HOME}/anaconda3/pkgs",
+        "${HOME}/miniconda3/pkgs",
+        "${HOME}/.conda/pkgs"
+      ],
+      "description": "Conda indirilmiş paket önbelleği (conda clean --packages bunu temizler)"
+    },
+    {
+      "id": "unity",
+      "name": "Unity Editor",
+      "paths": [
+        "${LOCALAPPDATA}/Unity/cache"
+      ],
+      "description": "Unity genel gölgelendirici ve GI önbelleği (projeler açıldığında yeniden oluşturulur)"
+    },
+    {
+      "id": "visual-studio",
+      "name": "Visual Studio",
+      "paths": [
+        "${LOCALAPPDATA}/Microsoft/VisualStudio"
+      ],
+      "childSubdir": "ComponentModelCache",
+      "description": "Visual Studio MEF bileşen modeli önbelleği (yeniden başlatmada yeniden oluşturulur)"
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "paths": [
+        "${APPDATA}/Notion/Cache/Cache_Data",
+        "${APPDATA}/Notion/Code Cache",
+        "${APPDATA}/Notion/GPUCache",
+        "${APPDATA}/Notion/logs",
+        "${APPDATA}/Notion/Partitions/notion/Cache/Cache_Data",
+        "${APPDATA}/Notion/Partitions/notion/Code Cache",
+        "${APPDATA}/Notion/Partitions/notion/GPUCache",
+        "${APPDATA}/Notion/Partitions/notion/DawnCache",
+        "${APPDATA}/Notion/Partitions/notion/DawnGraphiteCache",
+        "${APPDATA}/Notion/Partitions/notion/DawnWebGPUCache",
+        "${APPDATA}/Notion/Partitions/notion/Shared Dictionary/cache"
+      ],
+      "description": "Notion üst düzey ve bölümlenmiş web, derlenmiş kod, GPU, gölgelendirici, sözlük ve günlük önbellekleri; oturumlar ve çevrimdışı veriler korunur"
+    },
+    {
+      "id": "obsidian",
+      "name": "Obsidian",
+      "paths": [
+        "${APPDATA}/obsidian/Cache/Cache_Data",
+        "${APPDATA}/obsidian/Code Cache",
+        "${APPDATA}/obsidian/GPUCache"
+      ],
+      "description": "Obsidian Electron uygulama önbelleği, derlenmiş kod önbelleği ve GPU önbelleği"
+    },
+    {
+      "id": "whatsapp",
+      "name": "WhatsApp Desktop",
+      "paths": [
+        "${APPDATA}/WhatsApp/Cache/Cache_Data",
+        "${APPDATA}/WhatsApp/Code Cache",
+        "${APPDATA}/WhatsApp/GPUCache"
+      ],
+      "description": "WhatsApp Desktop Electron uygulama önbelleği ve GPU önbelleği"
+    },
+    {
+      "id": "bitwarden",
+      "name": "Bitwarden",
+      "paths": [
+        "${APPDATA}/Bitwarden/Cache/Cache_Data",
+        "${APPDATA}/Bitwarden/Code Cache",
+        "${APPDATA}/Bitwarden/GPUCache"
+      ],
+      "description": "Bitwarden Electron uygulama önbelleği ve GPU önbelleği"
+    },
+    {
+      "id": "1password",
+      "name": "1Password",
+      "paths": [
+        "${APPDATA}/1Password/Cache/Cache_Data",
+        "${APPDATA}/1Password/Code Cache",
+        "${APPDATA}/1Password/GPUCache"
+      ],
+      "description": "1Password Electron uygulama önbelleği ve GPU önbelleği"
+    },
+    {
+      "id": "ruby-gems",
+      "name": "Ruby Gem Cache",
+      "paths": [
+        "${HOME}/.gem"
+      ],
+      "childSubdir": "cache",
+      "description": "İndirilmiş .gem dosya önbelleği (yeniden kurulum gerektiğinde yeniden oluşturur)"
+    },
+    {
+      "id": "deno",
+      "name": "Deno Cache",
+      "paths": [
+        "${LOCALAPPDATA}/deno"
+      ],
+      "description": "Deno modül önbelleği (gerektiğinde yeniden indirilir)"
+    },
+    {
+      "id": "claude",
+      "name": "Claude Desktop Caches",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${APPDATA}/Claude/Cache/Cache_Data",
+        "${APPDATA}/Claude/Code Cache",
+        "${APPDATA}/Claude/GPUCache",
+        "${APPDATA}/Claude/DawnGraphiteCache",
+        "${APPDATA}/Claude/DawnWebGPUCache",
+        "${APPDATA}/Claude/Shared Dictionary/cache",
+        "${LOCALAPPDATA}/Packages/Claude_pzs8sxrjxfjjc/LocalCache/Roaming/Claude/Cache/Cache_Data",
+        "${LOCALAPPDATA}/Packages/Claude_pzs8sxrjxfjjc/LocalCache/Roaming/Claude/Code Cache",
+        "${LOCALAPPDATA}/Packages/Claude_pzs8sxrjxfjjc/LocalCache/Roaming/Claude/GPUCache",
+        "${LOCALAPPDATA}/Packages/Claude_pzs8sxrjxfjjc/LocalCache/Roaming/Claude/DawnGraphiteCache",
+        "${LOCALAPPDATA}/Packages/Claude_pzs8sxrjxfjjc/LocalCache/Roaming/Claude/DawnWebGPUCache",
+        "${LOCALAPPDATA}/Packages/Claude_pzs8sxrjxfjjc/LocalCache/Roaming/Claude/Shared Dictionary/cache"
+      ],
+      "minAgeDays": 1,
+      "description": "Claude Desktop web, derlenmiş kod, GPU, gölgelendirici ve sözlük önbellekleri; hesap durumu, konuşmalar, yerel depolama, oturumlar, projeler ve VM paketleri korunur"
+    },
+    {
+      "id": "claude-partitions",
+      "name": "Claude Desktop Partition Caches",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${APPDATA}/Claude/Partitions",
+        "${LOCALAPPDATA}/Packages/Claude_pzs8sxrjxfjjc/LocalCache/Roaming/Claude/Partitions"
+      ],
+      "minAgeDays": 1,
+      "recursiveMatch": {
+        "anchor": "Partitions",
+        "targets": [
+          "Cache",
+          "Code Cache",
+          "GPUCache",
+          "DawnCache",
+          "DawnGraphiteCache",
+          "DawnWebGPUCache"
+        ],
+        "excludedAncestors": [
+          "File System",
+          "IndexedDB",
+          "Local Storage",
+          "Network",
+          "Service Worker",
+          "Session Storage",
+          "Sessions",
+          "Sync Data",
+          "WebStorage",
+          "blob_storage",
+          "databases"
+        ],
+        "maxDepth": 8
+      },
+      "description": "Yalnızca Claude önizleme bölümü önbellekleri; oturumlar, IndexedDB, yerel depolama, service-worker verileri ve çevrimdışı içerik korunur"
+    },
+    {
+      "id": "claude-code-cache",
+      "name": "Claude Code Cache",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${HOME}/.claude/cache",
+        "${HOME}/.claude/plugins/cache"
+      ],
+      "minAgeDays": 1,
+      "description": "Claude Code indirme ve eklenti önbellekleri; projeler, kontrol noktaları, konuşma geçmişi, yapılandırma, eklentiler, yedekler ve kabuk anlık görüntüleri korunur"
+    },
+    {
+      "id": "claude-logs",
+      "name": "Claude Logs",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${APPDATA}/Claude/logs",
+        "${LOCALAPPDATA}/Claude/Logs",
+        "${LOCALAPPDATA}/Packages/Claude_pzs8sxrjxfjjc/LocalCache/Local/Claude/Logs",
+        "${HOME}/.claude/debug",
+        "${HOME}/.claude/logs"
+      ],
+      "minAgeDays": 7,
+      "description": "Bir haftadan eski Claude Desktop ve Claude Code tanılama günlükleri; konuşmalar, projeler, dosya geçmişi ve oturum verileri asla taranmaz"
+    },
+    {
+      "id": "claude-crash-reports",
+      "name": "Claude Crash Reports",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${APPDATA}/Claude/Crashpad/reports",
+        "${LOCALAPPDATA}/Packages/Claude_pzs8sxrjxfjjc/LocalCache/Roaming/Claude/Crashpad/reports"
+      ],
+      "minAgeDays": 7,
+      "description": "Bir haftadan eski Claude kilitlenme raporları; kilitlenme ayarları ve bekleyen uygulama durumu korunur"
+    },
+    {
+      "id": "chatgpt-desktop-cache",
+      "name": "ChatGPT Desktop Caches",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${LOCALAPPDATA}/Packages/OpenAI.ChatGPT-Desktop_2p2nqsd0c76g0/LocalCache/Roaming/ChatGPT/Cache/Cache_Data",
+        "${LOCALAPPDATA}/Packages/OpenAI.ChatGPT-Desktop_2p2nqsd0c76g0/LocalCache/Roaming/ChatGPT/Code Cache",
+        "${LOCALAPPDATA}/Packages/OpenAI.ChatGPT-Desktop_2p2nqsd0c76g0/LocalCache/Roaming/ChatGPT/GPUCache",
+        "${LOCALAPPDATA}/Packages/OpenAI.ChatGPT-Desktop_2p2nqsd0c76g0/LocalCache/Roaming/ChatGPT/DawnGraphiteCache",
+        "${LOCALAPPDATA}/Packages/OpenAI.ChatGPT-Desktop_2p2nqsd0c76g0/LocalCache/Roaming/ChatGPT/DawnWebGPUCache",
+        "${LOCALAPPDATA}/Packages/OpenAI.ChatGPT-Desktop_2p2nqsd0c76g0/LocalCache/Roaming/ChatGPT/Shared Dictionary/cache"
+      ],
+      "minAgeDays": 1,
+      "description": "ChatGPT Desktop web, derlenmiş kod, GPU, gölgelendirici ve sözlük önbellekleri; oturum açma durumu, konuşmalar, IndexedDB, yerel depolama ve oturumlar korunur"
+    },
+    {
+      "id": "chatgpt-desktop-partitions",
+      "name": "ChatGPT Desktop Partition Caches",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${LOCALAPPDATA}/Packages/OpenAI.ChatGPT-Desktop_2p2nqsd0c76g0/LocalCache/Roaming/ChatGPT/Partitions"
+      ],
+      "minAgeDays": 1,
+      "recursiveMatch": {
+        "anchor": "Partitions",
+        "targets": [
+          "Cache",
+          "Code Cache",
+          "GPUCache",
+          "DawnCache",
+          "DawnGraphiteCache",
+          "DawnWebGPUCache"
+        ],
+        "excludedAncestors": [
+          "File System",
+          "IndexedDB",
+          "Local Storage",
+          "Network",
+          "Service Worker",
+          "Session Storage",
+          "Sessions",
+          "Sync Data",
+          "WebStorage",
+          "blob_storage",
+          "databases"
+        ],
+        "maxDepth": 8
+      },
+      "description": "Yalnızca ChatGPT Desktop bölüm önbellekleri; konuşmalar, oturumlar, depolama ve çevrimdışı içerik korunur"
+    },
+    {
+      "id": "chatgpt-desktop-logs",
+      "name": "ChatGPT Desktop Logs",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${LOCALAPPDATA}/Packages/OpenAI.ChatGPT-Desktop_2p2nqsd0c76g0/LocalCache/Local/ChatGPT/Logs"
+      ],
+      "minAgeDays": 7,
+      "description": "Bir haftadan eski ChatGPT Desktop tanılama günlükleri; konuşmalar ve hesap durumu asla taranmaz"
+    },
+    {
+      "id": "chatgpt-desktop-crash-reports",
+      "name": "ChatGPT Desktop Crash Reports",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${LOCALAPPDATA}/Packages/OpenAI.ChatGPT-Desktop_2p2nqsd0c76g0/LocalCache/Roaming/ChatGPT/Crashpad/reports"
+      ],
+      "minAgeDays": 7,
+      "description": "Bir haftadan eski ChatGPT Desktop kilitlenme raporları"
+    },
+    {
+      "id": "codex-cache",
+      "name": "Codex Cache",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${HOME}/.codex/cache"
+      ],
+      "minAgeDays": 1,
+      "description": "Codex uygulama ve bağlayıcı meta veri önbellekleri; oturumlar, arşivler, bellekler, ekler, oluşturulan görüntüler, kimlik bilgileri, yapılandırma, eklentiler ve yüklü çalışma zamanları korunur"
+    },
+    {
+      "id": "codex-temp",
+      "name": "Codex Temporary Files",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${HOME}/.codex/tmp"
+      ],
+      "minAgeDays": 1,
+      "description": "Yerleşmiş Codex komut geçici dosyaları; .codex/.tmp altındaki eklenti hazırlama ve yedek alanı korunur"
+    },
+    {
+      "id": "codex-desktop-cache",
+      "name": "Codex Desktop Caches",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${APPDATA}/Codex/Cache/Cache_Data",
+        "${APPDATA}/Codex/Code Cache",
+        "${APPDATA}/Codex/GPUCache",
+        "${APPDATA}/Codex/DawnGraphiteCache",
+        "${APPDATA}/Codex/DawnWebGPUCache",
+        "${APPDATA}/Codex/Shared Dictionary/cache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/Cache/Cache_Data",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/Code Cache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/GPUCache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/DawnGraphiteCache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/DawnWebGPUCache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/Shared Dictionary/cache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/Default/Cache/Cache_Data",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/Default/Code Cache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/Default/GPUCache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/Default/DawnGraphiteCache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/Default/DawnWebGPUCache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/Default/Shared Dictionary/cache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/codex-browser-app/Cache/Cache_Data",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/codex-browser-app/Code Cache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/codex-browser-app/GPUCache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/codex-browser-app/DawnGraphiteCache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/codex-browser-app/DawnWebGPUCache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/codex-browser-app/Shared Dictionary/cache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/component_crx_cache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/extensions_crx_cache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/GrShaderCache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/ShaderCache",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/GPUPersistentCache/DawnGraphiteCache"
+      ],
+      "minAgeDays": 1,
+      "description": "Codex Desktop web, derlenmiş kod, GPU, gölgelendirici, bileşen, uzantı paketi ve sözlük önbellekleri; konuşmalar, tarayıcı profilleri, oturum açmalar, yerel depolama, oturumlar, eklentiler ve çalışma zamanları korunur"
+    },
+    {
+      "id": "codex-desktop-partitions",
+      "name": "Codex Desktop Partition Caches",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/Default/Partitions"
+      ],
+      "minAgeDays": 1,
+      "recursiveMatch": {
+        "anchor": "Partitions",
+        "targets": [
+          "Cache",
+          "Code Cache",
+          "GPUCache",
+          "DawnCache",
+          "DawnGraphiteCache",
+          "DawnWebGPUCache"
+        ],
+        "excludedAncestors": [
+          "File System",
+          "IndexedDB",
+          "Local Storage",
+          "Network",
+          "Service Worker",
+          "Session Storage",
+          "Sessions",
+          "Sync Data",
+          "WebStorage",
+          "blob_storage",
+          "databases"
+        ],
+        "maxDepth": 8
+      },
+      "description": "Yalnızca Codex kontrollü tarayıcı bölüm önbellekleri; tarayıcı uzantıları, geçmiş, indirmeler, oturum açmalar, oturumlar, yerel depolama, service-worker verileri ve çevrimdışı içerik korunur"
+    },
+    {
+      "id": "codex-desktop-logs",
+      "name": "Codex Desktop Logs",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${APPDATA}/Codex/logs",
+        "${LOCALAPPDATA}/Codex/Logs",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/Codex/Logs"
+      ],
+      "minAgeDays": 7,
+      "description": "Bir haftadan eski Codex Desktop tanılama günlükleri; .codex altındaki görev, durum, bellek ve etkinlik veritabanları asla taranmaz"
+    },
+    {
+      "id": "codex-desktop-crash-reports",
+      "name": "Codex Desktop Crash Reports",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${APPDATA}/Codex/Crashpad/reports",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/Crashpad/reports",
+        "${LOCALAPPDATA}/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Roaming/Codex/web/Codex/Crashpad/reports"
+      ],
+      "minAgeDays": 7,
+      "description": "Bir haftadan eski Codex Desktop kilitlenme raporları"
+    },
+    {
+      "id": "github-copilot-logs",
+      "name": "GitHub Copilot Logs",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${HOME}/.copilot/logs"
+      ],
+      "minAgeDays": 7,
+      "description": "Bir haftadan eski GitHub Copilot tanılama günlükleri; sohbet oturumları, düzenleme oturumları, kimlik bilgileri ve IDE verileri korunur"
+    },
+    {
+      "id": "sublime-text",
+      "name": "Sublime Text",
+      "paths": [
+        "${LOCALAPPDATA}/Sublime Text/Cache"
+      ],
+      "description": "Sublime Text dizin ve varlık önbelleği"
+    },
+    {
+      "id": "termius",
+      "name": "Termius",
+      "paths": [
+        "${APPDATA}/Termius/Cache/Cache_Data",
+        "${APPDATA}/Termius/Code Cache",
+        "${APPDATA}/Termius/GPUCache"
+      ],
+      "description": "Termius Electron uygulama önbelleği ve GPU önbelleği"
+    },
+    {
+      "id": "ledger-live",
+      "name": "Ledger Live",
+      "paths": [
+        "${APPDATA}/Ledger Live/Cache/Cache_Data",
+        "${APPDATA}/Ledger Live/Code Cache",
+        "${APPDATA}/Ledger Live/GPUCache"
+      ],
+      "description": "Ledger Live Electron uygulama önbelleği ve GPU önbelleği"
+    },
+    {
+      "id": "node-gyp",
+      "name": "node-gyp Cache",
+      "paths": [
+        "${LOCALAPPDATA}/node-gyp/Cache"
+      ],
+      "description": "Node.js yerel eklenti derleme başlık önbelleği (gerektiğinde yeniden indirilir)"
+    },
+    {
+      "id": "electron-builder",
+      "name": "electron-builder Cache",
+      "paths": [
+        "${LOCALAPPDATA}/electron-builder/Cache"
+      ],
+      "description": "Electron builder indirme önbelleği (gerektiğinde yeniden indirilir)"
+    },
+    {
+      "id": "electron",
+      "name": "Electron Runtime Cache",
+      "paths": [
+        "${LOCALAPPDATA}/electron/Cache"
+      ],
+      "description": "İndirilmiş Electron çalışma zamanı arşivleri ve çıkarılmış dağıtımlar; gerektiğinde yeniden indirilir"
+    },
+    {
+      "id": "ffmpeg-static",
+      "name": "ffmpeg-static Cache",
+      "paths": [
+        "${LOCALAPPDATA}/ffmpeg-static-nodejs/Cache"
+      ],
+      "description": "İndirilmiş ffmpeg-static ikili dosyaları ve yanıt meta verileri; gerektiğinde yeniden indirilir"
+    },
+    {
+      "id": "curseforge",
+      "name": "CurseForge",
+      "paths": [
+        "${APPDATA}/CurseForge/Cache/Cache_Data",
+        "${APPDATA}/CurseForge/Code Cache",
+        "${APPDATA}/CurseForge/GPUCache",
+        "${APPDATA}/CurseForge/logs"
+      ],
+      "description": "CurseForge mod yöneticisi Electron uygulama önbelleği, GPU önbelleği ve günlük dosyaları"
+    },
+    {
+      "id": "logitech-ghub",
+      "name": "Logitech G HUB",
+      "paths": [
+        "${APPDATA}/G HUB/Cache/Cache_Data",
+        "${APPDATA}/G HUB/Code Cache",
+        "${APPDATA}/G HUB/GPUCache",
+        "${PROGRAMDATA}/LGHUB/cache"
+      ],
+      "minAgeDays": 7,
+      "description": "Logitech G HUB Electron önbellekleri ve indirilmiş içerik adresli paketler; son bir haftada kullanılan dosyalar korunur"
+    },
+    {
+      "id": "zen-browser",
+      "name": "Zen Browser",
+      "paths": [
+        "${LOCALAPPDATA}/Zen/Profiles"
+      ],
+      "childSubdir": "cache2",
+      "description": "Zen Browser profil başına web içeriği önbelleği"
+    },
+    {
+      "id": "kodi",
+      "name": "Kodi",
+      "paths": [
+        "${APPDATA}/Kodi/cache",
+        "${APPDATA}/Kodi/userdata/Thumbnails"
+      ],
+      "description": "Kodi medya merkezi önbelleği ve küçük resimler (birkaç GB olabilir; gerektiğinde yeniden oluşturulur)"
+    },
+    {
+      "id": "qbittorrent",
+      "name": "qBittorrent",
+      "paths": [
+        "${LOCALAPPDATA}/qBittorrent/logs"
+      ],
+      "description": "qBittorrent günlük dosyaları"
+    },
+    {
+      "id": "handbrake",
+      "name": "HandBrake",
+      "paths": [
+        "${APPDATA}/HandBrake/logs"
+      ],
+      "description": "Geçmiş kodlama işlerinden HandBrake video kodlayıcı günlük dosyaları"
+    },
+    {
+      "id": "java-cache",
+      "name": "Java Runtime Cache",
+      "paths": [
+        "${HOME}/AppData/LocalLow/Sun/Java/Deployment/cache"
+      ],
+      "description": "Java Web Start ve aplet indirme önbelleği (kullanımdan kalkmış teknoloji; kaldırmak güvenlidir)"
+    },
+    {
+      "id": "windsurf",
+      "name": "Windsurf IDE",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${APPDATA}/Windsurf/Cache/Cache_Data",
+        "${APPDATA}/Windsurf/CachedData",
+        "${APPDATA}/Windsurf/CachedExtensions",
+        "${APPDATA}/Windsurf/logs"
+      ],
+      "minAgeDays": 1,
+      "description": "Windsurf IDE önbelleğe alınmış veriler, uzantılar ve yerleşmiş günlükler; projeler, geçmiş, oturumlar ve ayarlar korunur"
+    },
+    {
+      "id": "hyper",
+      "name": "Hyper Terminal",
+      "paths": [
+        "${APPDATA}/Hyper/Cache/Cache_Data",
+        "${APPDATA}/Hyper/Code Cache",
+        "${APPDATA}/Hyper/GPUCache"
+      ],
+      "description": "Hyper terminal Electron uygulama önbelleği ve GPU önbelleği"
+    },
+    {
+      "id": "linear",
+      "name": "Linear",
+      "paths": [
+        "${APPDATA}/Linear/Cache/Cache_Data",
+        "${APPDATA}/Linear/Code Cache",
+        "${APPDATA}/Linear/GPUCache"
+      ],
+      "description": "Linear proje yönetimi Electron uygulama önbelleği ve GPU önbelleği"
+    },
+    {
+      "id": "todoist",
+      "name": "Todoist",
+      "paths": [
+        "${APPDATA}/Todoist/Cache/Cache_Data",
+        "${APPDATA}/Todoist/Code Cache",
+        "${APPDATA}/Todoist/GPUCache"
+      ],
+      "description": "Todoist Electron uygulama önbelleği ve GPU önbelleği"
+    },
+    {
+      "id": "loom",
+      "name": "Loom",
+      "paths": [
+        "${APPDATA}/Loom/Cache/Cache_Data",
+        "${APPDATA}/Loom/Code Cache",
+        "${APPDATA}/Loom/GPUCache"
+      ],
+      "description": "Loom ekran kaydedici Electron uygulama önbelleği ve GPU önbelleği"
+    },
+    {
+      "id": "scoop",
+      "name": "Scoop Cache",
+      "paths": [
+        "${HOME}/scoop/cache"
+      ],
+      "description": "Scoop paket yöneticisi indirilmiş yükleyici önbelleği (gerektiğinde yeniden indirilir)"
+    },
+    {
+      "id": "aws-cli",
+      "name": "AWS CLI Cache",
+      "paths": [
+        "${HOME}/.aws/cli/cache"
+      ],
+      "description": "AWS CLI önbelleğe alınmış API yanıtları ve geçici kimlik bilgileri (otomatik yeniden alınır)"
+    },
+    {
+      "id": "gcloud",
+      "name": "Google Cloud CLI Cache",
+      "paths": [
+        "${APPDATA}/gcloud/logs",
+        "${APPDATA}/gcloud/cache"
+      ],
+      "description": "Google Cloud CLI günlük dosyaları ve önbelleğe alınmış API verileri"
+    },
+    {
+      "id": "google-drive",
+      "name": "Google Drive",
+      "paths": [
+        "${LOCALAPPDATA}/Google/DriveFS/Logs",
+        "${LOCALAPPDATA}/Google/DriveFS/cef_cache/Cache/Cache_Data",
+        "${LOCALAPPDATA}/Google/DriveFS/cef_cache/Code Cache",
+        "${LOCALAPPDATA}/Google/DriveFS/cef_cache/component_crx_cache",
+        "${LOCALAPPDATA}/Google/DriveFS/cef_cache/Shared Dictionary/cache"
+      ],
+      "description": "Döndürülmüş Google Drive günlükleri ve gömülü Chromium önbellekleri; eşitleme durumu ve çevrimdışı dosyalar korunur"
+    },
+    {
+      "id": "ertcleaner",
+      "name": "ErtCleaner",
+      "paths": [
+        "${APPDATA}/ertcleaner/Cache/Cache_Data",
+        "${APPDATA}/ertcleaner/Code Cache",
+        "${APPDATA}/ertcleaner/GPUCache",
+        "${APPDATA}/ertcleaner/logs"
+      ],
+      "description": "ErtCleaner'ın kendi web, derlenmiş kod, GPU ve günlük önbellekleri; etkin dosyalar yenilik ve kilit denetimleriyle korunur"
+    },
+    {
+      "id": "spotify-store-browser",
+      "name": "Spotify Store Browser Cache",
+      "paths": [
+        "${LOCALAPPDATA}/Packages/SpotifyAB.SpotifyMusic_zpdnekdrzrea0/LocalCache/Spotify/Browser"
+      ],
+      "minAgeDays": 1,
+      "recursiveMatch": {
+        "anchor": "Browser",
+        "targets": [
+          "Cache",
+          "Code Cache",
+          "GPUCache",
+          "DawnCache",
+          "DawnGraphiteCache",
+          "DawnWebGPUCache"
+        ],
+        "excludedAncestors": [
+          "File System",
+          "IndexedDB",
+          "Local Storage",
+          "Network",
+          "Service Worker",
+          "Session Storage",
+          "Sessions",
+          "Sync Data",
+          "WebStorage",
+          "blob_storage",
+          "databases"
+        ],
+        "maxDepth": 8
+      },
+      "description": "Yalnızca Store Spotify tarayıcı ve bölüm önbellekleri; hesap durumu, indirmeler, oturumlar, IndexedDB ve çevrimdışı veriler korunur"
+    },
+    {
+      "id": "spotify-store-shared",
+      "name": "Spotify Store Shared Caches",
+      "paths": [
+        "${LOCALAPPDATA}/Packages/SpotifyAB.SpotifyMusic_zpdnekdrzrea0/LocalCache/Spotify/Default/Cache/Cache_Data",
+        "${LOCALAPPDATA}/Packages/SpotifyAB.SpotifyMusic_zpdnekdrzrea0/LocalCache/Spotify/Default/Code Cache",
+        "${LOCALAPPDATA}/Packages/SpotifyAB.SpotifyMusic_zpdnekdrzrea0/LocalCache/Spotify/Default/GPUCache",
+        "${LOCALAPPDATA}/Packages/SpotifyAB.SpotifyMusic_zpdnekdrzrea0/LocalCache/Spotify/Default/DawnCache",
+        "${LOCALAPPDATA}/Packages/SpotifyAB.SpotifyMusic_zpdnekdrzrea0/LocalCache/Spotify/Default/DawnGraphiteCache",
+        "${LOCALAPPDATA}/Packages/SpotifyAB.SpotifyMusic_zpdnekdrzrea0/LocalCache/Spotify/Default/DawnWebGPUCache",
+        "${LOCALAPPDATA}/Packages/SpotifyAB.SpotifyMusic_zpdnekdrzrea0/LocalCache/Spotify/Default/Shared Dictionary/cache",
+        "${LOCALAPPDATA}/Packages/SpotifyAB.SpotifyMusic_zpdnekdrzrea0/LocalCache/Spotify/component_crx_cache",
+        "${LOCALAPPDATA}/Packages/SpotifyAB.SpotifyMusic_zpdnekdrzrea0/LocalCache/Spotify/extensions_crx_cache",
+        "${LOCALAPPDATA}/Packages/SpotifyAB.SpotifyMusic_zpdnekdrzrea0/LocalCache/Spotify/GraphiteDawnCache",
+        "${LOCALAPPDATA}/Packages/SpotifyAB.SpotifyMusic_zpdnekdrzrea0/LocalCache/Spotify/GrShaderCache",
+        "${LOCALAPPDATA}/Packages/SpotifyAB.SpotifyMusic_zpdnekdrzrea0/LocalCache/Spotify/ShaderCache",
+        "${LOCALAPPDATA}/Packages/SpotifyAB.SpotifyMusic_zpdnekdrzrea0/LocalCache/Spotify/DashboardWidget/logs",
+        "${LOCALAPPDATA}/Packages/SpotifyAB.SpotifyMusic_zpdnekdrzrea0/LocalCache/Spotify/DashboardWidget/Crashpad/reports",
+        "${LOCALAPPDATA}/Packages/SpotifyAB.SpotifyMusic_zpdnekdrzrea0/LocalCache/Spotify/Launcher/Logs",
+        "${LOCALAPPDATA}/Packages/SpotifyAB.SpotifyMusic_zpdnekdrzrea0/LocalCache/Spotify/Launcher/Crashpad/reports"
+      ],
+      "minAgeDays": 1,
+      "description": "Store Spotify profil, gölgelendirici, bileşen, widget, başlatıcı ve kilitlenme raporu önbellekleri; Data ve çevrimdışı depolama ağaçları korunur"
+    },
+    {
+      "id": "nvidia-app",
+      "name": "NVIDIA App",
+      "paths": [
+        "${LOCALAPPDATA}/NVIDIA Corporation/NVIDIA app/CefCache/Cache/Cache_Data",
+        "${LOCALAPPDATA}/NVIDIA Corporation/NVIDIA app/CefCache/Code Cache",
+        "${LOCALAPPDATA}/NVIDIA Corporation/NVIDIA app/CefCache/GPUCache",
+        "${LOCALAPPDATA}/NVIDIA Corporation/NVIDIA app/CefCache/component_crx_cache",
+        "${LOCALAPPDATA}/NVIDIA Corporation/NVIDIA app/CefCache/extensions_crx_cache",
+        "${LOCALAPPDATA}/NVIDIA Corporation/NVIDIA app/CefCache/GraphiteDawnCache",
+        "${LOCALAPPDATA}/NVIDIA Corporation/NVIDIA app/CefCache/GrShaderCache",
+        "${LOCALAPPDATA}/NVIDIA Corporation/NVIDIA app/CefCache/ShaderCache",
+        "${PROGRAMDATA}/NVIDIA Corporation/NVIDIA app/Logs"
+      ],
+      "minAgeDays": 1,
+      "description": "NVIDIA App gömülü tarayıcı önbellekleri ve yerleşmiş günlükler; hesap, varlıklar, ayarlar ve sürücü durumu korunur"
+    },
+    {
+      "id": "cursor-partitions",
+      "name": "Cursor IDE Partitions",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${APPDATA}/Cursor/Partitions"
+      ],
+      "minAgeDays": 1,
+      "recursiveMatch": {
+        "anchor": "Partitions",
+        "targets": [
+          "Cache",
+          "Code Cache",
+          "GPUCache",
+          "DawnCache",
+          "DawnGraphiteCache",
+          "DawnWebGPUCache"
+        ],
+        "excludedAncestors": [
+          "File System",
+          "IndexedDB",
+          "Local Storage",
+          "Network",
+          "Service Worker",
+          "Session Storage",
+          "Sessions",
+          "WebStorage",
+          "blob_storage",
+          "databases"
+        ],
+        "maxDepth": 8
+      },
+      "description": "Cursor tarayıcı bölümü web, derlenmiş kod, GPU ve gölgelendirici önbellekleri; oturumlar ve kalıcı web verileri korunur"
+    },
+    {
+      "id": "jetbrains-logs",
+      "name": "JetBrains IDE Logs",
+      "paths": [
+        "${LOCALAPPDATA}/JetBrains"
+      ],
+      "minAgeDays": 7,
+      "childSubdir": "log",
+      "description": "Bir haftadan eski yerleşmiş JetBrains IDE günlükleri ve tanılama çıktısı"
+    },
+    {
+      "id": "ea-desktop-logs",
+      "name": "EA Desktop Logs",
+      "paths": [
+        "${PROGRAMDATA}/EA Desktop/Logs"
+      ],
+      "minAgeDays": 1,
+      "description": "Yerleşmiş EA arka plan hizmeti, yükleyici ve masaüstü günlükleri; başlatıcı kimlik doğrulaması ve çevrimdışı veriler korunur"
+    },
+    {
+      "id": "edge-update-logs",
+      "name": "Microsoft Edge Update Logs",
+      "paths": [
+        "${PROGRAMDATA}/Microsoft/EdgeUpdate/Log"
+      ],
+      "minAgeDays": 1,
+      "description": "Yerleşmiş Microsoft Edge güncelleyici günlükleri; son bir günde değiştirilen etkin günlükler korunur"
+    },
+    {
+      "id": "firefox-crash-history",
+      "name": "Firefox Crash History",
+      "paths": [
+        "${APPDATA}/Mozilla/Firefox/Crash Reports/submitted",
+        "${APPDATA}/Mozilla/Firefox/Crash Reports/events",
+        "${APPDATA}/Mozilla/Firefox/Crash Reports/glean"
+      ],
+      "minAgeDays": 7,
+      "description": "Bir haftadan eski gönderilmiş Firefox kilitlenme raporları ve telemetri olayları; kilitlenme raporlayıcı ayarları korunur"
+    },
+    {
+      "id": "firefox-pending-crashes",
+      "name": "Old Firefox Pending Crashes",
+      "paths": [
+        "${APPDATA}/Mozilla/Firefox/Crash Reports/pending"
+      ],
+      "minAgeDays": 30,
+      "description": "30 günden eski gönderilmemiş Firefox kilitlenme raporları; son bekleyen raporlar ve ayarlar korunur"
+    },
+    {
+      "id": "chocolatey-logs",
+      "name": "Chocolatey Logs",
+      "paths": [
+        "${PROGRAMDATA}/chocolatey/logs"
+      ],
+      "minAgeDays": 7,
+      "description": "Bir haftadan eski Chocolatey paket yöneticisi günlükleri; yüklü paketler, yedekler, yapılandırma ve ikili dosyalar korunur"
+    },
+    {
+      "id": "bramblewatch",
+      "name": "Bramblewatch",
+      "paths": [
+        "${APPDATA}/Bramblewatch/Cache/Cache_Data",
+        "${APPDATA}/Bramblewatch/Code Cache",
+        "${APPDATA}/Bramblewatch/GPUCache",
+        "${APPDATA}/Bramblewatch/DawnGraphiteCache",
+        "${APPDATA}/Bramblewatch/DawnWebGPUCache",
+        "${APPDATA}/Bramblewatch/Shared Dictionary/cache",
+        "${APPDATA}/Bramblewatch/logs"
+      ],
+      "minAgeDays": 1,
+      "description": "Bramblewatch Electron web, derlenmiş kod, GPU, gölgelendirici, sözlük ve yerleşmiş günlük önbellekleri"
+    },
+    {
+      "id": "hearthglen",
+      "name": "Hearthglen",
+      "paths": [
+        "${APPDATA}/hearthglen/Cache/Cache_Data",
+        "${APPDATA}/hearthglen/Code Cache",
+        "${APPDATA}/hearthglen/GPUCache",
+        "${APPDATA}/hearthglen/DawnGraphiteCache",
+        "${APPDATA}/hearthglen/DawnWebGPUCache",
+        "${APPDATA}/hearthglen/Shared Dictionary/cache"
+      ],
+      "minAgeDays": 1,
+      "description": "Hearthglen Electron web, derlenmiş kod, GPU, gölgelendirici ve sözlük önbellekleri"
+    },
+    {
+      "id": "t3-code",
+      "name": "T3 Code",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${APPDATA}/t3code/Cache/Cache_Data",
+        "${APPDATA}/t3code/Code Cache",
+        "${APPDATA}/t3code/GPUCache",
+        "${APPDATA}/t3code/DawnGraphiteCache",
+        "${APPDATA}/t3code/DawnWebGPUCache",
+        "${APPDATA}/t3code/Shared Dictionary/cache"
+      ],
+      "minAgeDays": 1,
+      "description": "T3 Code Electron web, derlenmiş kod, GPU, gölgelendirici ve sözlük önbellekleri; çalışma alanları ve oturumlar korunur"
+    },
+    {
+      "id": "t3-code-partitions",
+      "name": "T3 Code Partitions",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${APPDATA}/t3code/Partitions"
+      ],
+      "minAgeDays": 1,
+      "recursiveMatch": {
+        "anchor": "Partitions",
+        "targets": [
+          "Cache",
+          "Code Cache",
+          "GPUCache",
+          "DawnCache",
+          "DawnGraphiteCache",
+          "DawnWebGPUCache"
+        ],
+        "excludedAncestors": [
+          "File System",
+          "IndexedDB",
+          "Local Storage",
+          "Network",
+          "Service Worker",
+          "Session Storage",
+          "Sessions",
+          "WebStorage",
+          "blob_storage",
+          "databases"
+        ],
+        "maxDepth": 8
+      },
+      "description": "Yalnızca T3 Code önizleme bölümü önbellekleri; bölüm oturumları, depolama ve çalışma alanı verileri korunur"
+    },
+    {
+      "id": "t3-code-logs",
+      "name": "T3 Code Logs",
+      "group": "Yapay Zeka Araçları",
+      "paths": [
+        "${HOME}/.t3/userdata/logs"
+      ],
+      "minAgeDays": 7,
+      "description": "Bir haftadan eski T3 Code tanılama günlükleri; ekler, sırlar ve çalışma zamanı durumu asla taranmaz"
+    },
+    {
+      "id": "buzz-node-cache",
+      "name": "Buzz Node Tools Cache",
+      "paths": [
+        "${APPDATA}/Buzz/node-tools/cache"
+      ],
+      "minAgeDays": 1,
+      "description": "Buzz npm indirme ve meta veri önbelleği; yüklü node araçları ve modüller korunur"
+    },
+    {
+      "id": "upscayl",
+      "name": "Upscayl",
+      "paths": [
+        "${APPDATA}/Upscayl/Cache/Cache_Data",
+        "${APPDATA}/Upscayl/Code Cache",
+        "${APPDATA}/Upscayl/GPUCache",
+        "${APPDATA}/Upscayl/DawnCache",
+        "${APPDATA}/Upscayl/logs"
+      ],
+      "minAgeDays": 1,
+      "description": "Upscayl Electron web, derlenmiş kod, GPU, gölgelendirici ve yerleşmiş günlük önbellekleri; görüntü veritabanları korunur"
+    },
+    {
+      "id": "todesktop-builder",
+      "name": "ToDesktop Builder",
+      "paths": [
+        "${APPDATA}/ToDesktop Builder/Cache/Cache_Data",
+        "${APPDATA}/ToDesktop Builder/Code Cache",
+        "${APPDATA}/ToDesktop Builder/GPUCache",
+        "${APPDATA}/ToDesktop Builder/DawnGraphiteCache",
+        "${APPDATA}/ToDesktop Builder/DawnWebGPUCache",
+        "${APPDATA}/ToDesktop Builder/Shared Dictionary/cache",
+        "${APPDATA}/ToDesktop Builder/logs"
+      ],
+      "minAgeDays": 1,
+      "description": "ToDesktop Builder Electron önbellekleri ve yerleşmiş günlükler; uygulama projeleri, ikili dosyalar, oturumlar ve depolama korunur"
+    },
+    {
+      "id": "git-project-updater",
+      "name": "Git Project Updater",
+      "paths": [
+        "${APPDATA}/git-project-updater/Cache/Cache_Data",
+        "${APPDATA}/git-project-updater/Code Cache",
+        "${APPDATA}/git-project-updater/GPUCache",
+        "${APPDATA}/git-project-updater/DawnGraphiteCache",
+        "${APPDATA}/git-project-updater/DawnWebGPUCache",
+        "${APPDATA}/git-project-updater/Shared Dictionary/cache",
+        "${APPDATA}/git-project-updater/logs"
+      ],
+      "minAgeDays": 1,
+      "description": "Git Project Updater Electron önbellekleri ve yerleşmiş günlükler; depo ve oturum verileri korunur"
+    },
+    {
+      "id": "polyscope",
+      "name": "Polyscope",
+      "paths": [
+        "${APPDATA}/Polyscope/Cache/Cache_Data",
+        "${APPDATA}/Polyscope/Code Cache",
+        "${APPDATA}/Polyscope/GPUCache",
+        "${APPDATA}/Polyscope/DawnGraphiteCache",
+        "${APPDATA}/Polyscope/DawnWebGPUCache",
+        "${APPDATA}/Polyscope/Shared Dictionary/cache",
+        "${APPDATA}/Polyscope/logs"
+      ],
+      "minAgeDays": 1,
+      "description": "Polyscope Electron önbellekleri ve yerleşmiş günlükler; yerel depolama, ağ durumu ve oturumlar korunur"
+    },
+    {
+      "id": "shure-plus-motiv",
+      "name": "ShurePlus MOTIV",
+      "paths": [
+        "${APPDATA}/ShurePlus MOTIV/Cache/Cache_Data",
+        "${APPDATA}/ShurePlus MOTIV/Code Cache",
+        "${APPDATA}/ShurePlus MOTIV/GPUCache",
+        "${APPDATA}/ShurePlus MOTIV/logs"
+      ],
+      "minAgeDays": 1,
+      "description": "ShurePlus MOTIV Electron önbellekleri ve yerleşmiş günlükler; ürün yazılımı, cihaz ayarları ve kaydedilen içerik korunur"
+    },
+    {
+      "id": "termius-beta",
+      "name": "Termius Beta",
+      "paths": [
+        "${APPDATA}/Termius Beta/Cache/Cache_Data",
+        "${APPDATA}/Termius Beta/Code Cache",
+        "${APPDATA}/Termius Beta/GPUCache",
+        "${APPDATA}/Termius Beta/DawnCache",
+        "${APPDATA}/Termius Beta/Crashpad/reports"
+      ],
+      "minAgeDays": 1,
+      "description": "Termius Beta Electron ve eski kilitlenme raporu önbellekleri; kimlik bilgileri, veritabanları, oturumlar ve depolama korunur"
+    },
+    {
+      "id": "electron-updater-artifacts",
+      "name": "Stale Electron Updater Packages",
+      "paths": [
+        "${LOCALAPPDATA}"
+      ],
+      "fileMatch": {
+        "names": [
+          "installer.exe",
+          "current.blockmap"
+        ],
+        "childDirSuffix": "-updater",
+        "minAgeDays": 14,
+        "skipIfChildExists": [
+          "pending"
+        ]
+      },
+      "description": "Yalnızca eski kök düzey Electron güncelleyici paketleri; bekleyen güncellemeler, iç içe dosyalar ve 14 günden yeni paketler asla sunulmaz"
+    },
+    {
+      "id": "webview2",
+      "name": "Microsoft Edge WebView2 Caches",
+      "paths": [
+        "${LOCALAPPDATA}"
+      ],
+      "recursiveMatch": {
+        "anchor": "EBWebView",
+        "anchorPaths": [
+          "*/EBWebView",
+          "Microsoft/*/EBWebView",
+          "Microsoft/*/*/EBWebView",
+          "Microsoft/*/*/*/EBWebView",
+          "Packages/*/*/EBWebView",
+          "Packages/*/*/*/EBWebView",
+          "Packages/*/*/*/*/EBWebView",
+          "TeamViewer/EdgeBrowserControl/*/*/EBWebView",
+          "TeamViewer/EdgeBrowserControl/*/*/*/EBWebView",
+          "Zoom/data/WebviewCacheX64/*/EBWebView",
+          "Google/DriveFS/webview2_user_data/*/EBWebView",
+          "Microsoft/Office/*/Wef/webview2/*/*/EBWebView"
+        ],
+        "targets": [
+          "Cache",
+          "Code Cache",
+          "GPUCache",
+          "DawnGraphiteCache",
+          "DawnWebGPUCache"
+        ],
+        "excludedAncestors": [
+          "File System",
+          "IndexedDB",
+          "Local Storage",
+          "Network",
+          "Service Worker",
+          "Session Storage",
+          "WebStorage",
+          "blob_storage",
+          "databases"
+        ],
+        "maxDepth": 12
+      },
+      "description": "Yalnızca WebView2 web, derlenmiş kod, GPU, gölgelendirici ve sözlük önbellek dizinleri; sınırlı çapa yolları ilgisiz Local AppData ağaçlarının taranmasını önler ve çerezleri, oturumları, IndexedDB, Yerel Depolama, service-worker depolamasını ve çevrimdışı içeriği korur"
+    },
+    {
+      "id": "zed",
+      "name": "Zed Editor",
+      "paths": [
+        "${LOCALAPPDATA}/Zed/node/cache",
+        "${LOCALAPPDATA}/Zed/logs"
+      ],
+      "description": "Zed indirilmiş Node paket önbelleği ve günlükleri; gerektiğinde yeniden oluşturulur"
+    }
+  ]
+}

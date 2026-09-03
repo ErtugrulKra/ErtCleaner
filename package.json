@@ -1,0 +1,88 @@
+{
+  "name": "ertcleaner",
+  "version": "0.1.3",
+  "description": "Windows için modern, açık kaynak sistem temizleyici",
+  "main": "./out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "package": "electron-vite build && electron-builder --win --publish never",
+    "package:win": "electron-vite build && electron-builder --win --publish never",
+    "package:store": "electron-vite build && electron-builder --win appx --publish never",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "validate:rules": "npx tsx src/main/rules/validate.ts",
+    "validate:release-docs": "node scripts/validate-release-docs.js",
+    "sbom": "node scripts/generate-sbom.js",
+    "new-rule": "node scripts/new-rule.js",
+    "find-cache": "node scripts/find-cache.js",
+    "preview-rule": "node scripts/preview-rule.js",
+    "catalog": "node scripts/generate-catalog.js",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md",
+    "release": "node scripts/release.js",
+    "postinstall": "patch-package && electron-rebuild -w better-sqlite3"
+  },
+  "keywords": [
+    "system-cleaner",
+    "electron",
+    "windows",
+    "optimization"
+  ],
+  "author": {
+    "name": "ErtCleaner Contributors"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ErtugrulKra/ErtCleaner.git"
+  },
+  "homepage": "https://github.com/ErtugrulKra/ErtCleaner",
+  "bugs": {
+    "url": "https://github.com/ErtugrulKra/ErtCleaner/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@axe-core/react": "^4.13.0",
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
+    "@cyclonedx/cyclonedx-npm": "^6.0.1",
+    "@electron/rebuild": "^4.2.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^5.2.0",
+    "ajv": "^8.20.0",
+    "conventional-changelog": "^8.1.3",
+    "conventional-changelog-angular": "^8.3.1",
+    "electron": "^41.10.5",
+    "electron-builder": "^26.15.3",
+    "electron-vite": "^5.0.0",
+    "patch-package": "^8.0.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.6",
+    "vitest": "^4.1.10"
+  },
+  "dependencies": {
+    "@litko/yara-x": "^0.6.1",
+    "@tanstack/react-table": "^8.21.3",
+    "better-sqlite3": "^12.11.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.43.0",
+    "i18next": "^26.3.6",
+    "lucide-react": "^0.577.0",
+    "react-i18next": "^17.0.11",
+    "react-router-dom": "^7.18.2",
+    "recharts": "^3.10.1",
+    "sonner": "^2.0.8",
+    "systeminformation": "^5.33.1",
+    "tailwind-merge": "^3.6.0",
+    "zustand": "^5.0.15"
+  }
+}

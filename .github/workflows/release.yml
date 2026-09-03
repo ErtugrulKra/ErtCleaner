@@ -1,0 +1,137 @@
+name: Release
+
+on:
+  push:
+    tags:
+      # Digit after v — rejects the v.0.1.1 typo (extra dot). GitHub globs, not regex.
+      - 'v[0-9]*'
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Verify tag matches package.json
+        shell: pwsh
+        run: |
+          $pkgVersion = node -p "require('./package.json').version"
+          $tag = $env:GITHUB_REF_NAME
+          if ($tag -notmatch '^v\d+\.\d+\.\d+$') {
+            Write-Error "Tag '$tag' is not vMAJOR.MINOR.PATCH (expected 'v$pkgVersion', not 'v.$pkgVersion')."
+            exit 1
+          }
+          if ("v$pkgVersion" -ne $tag) {
+            Write-Error "Tag '$tag' does not match package.json version '$pkgVersion' (expected 'v$pkgVersion'). Bump package.json with npm run release — do not tag a 0.1.0 commit as v0.1.2."
+            exit 1
+          }
+          Write-Host "Tag $tag matches package.json $pkgVersion"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Test
+        run: npm test
+
+      - name: Validate cleaner rules
+        run: npm run validate:rules
+
+      - name: Validate release documentation
+        run: npm run validate:release-docs
+
+      - name: Build Windows installer and Store package
+        run: npm run package:win
+
+      - name: Generate SBOM
+        shell: pwsh
+        run: |
+          $version = node -p "require('./package.json').version"
+          if (-not (Test-Path -LiteralPath dist)) {
+            New-Item -ItemType Directory -Path dist | Out-Null
+          }
+          $out = "dist/ErtCleaner-$version.cdx.json"
+          npx cyclonedx-npm --output-reproducible --output-format JSON --mc-type application --output-file $out
+          if (-not (Test-Path -LiteralPath $out)) {
+            Write-Error "SBOM was not written: $out"
+            exit 1
+          }
+          Write-Host "Wrote $out"
+
+      - name: SHA256 checksum
+        shell: pwsh
+        run: |
+          $version = node -p "require('./package.json').version"
+          $expected = "ErtCleaner-Setup-$version.exe"
+          $exe = Get-ChildItem -Path dist -Filter 'ErtCleaner-Setup-*.exe' -File |
+            Where-Object { $_.Name -notlike '*.blockmap' }
+          if ($exe.Count -ne 1) {
+            Write-Error "Expected exactly one installer in dist, found $($exe.Count)"
+            exit 1
+          }
+          if ($exe.Name -ne $expected) {
+            Write-Error "Installer '$($exe.Name)' does not match '$expected'"
+            exit 1
+          }
+
+          $hash = (Get-FileHash -Path $exe.FullName -Algorithm SHA256).Hash.ToLower()
+          $checksumFile = Join-Path $exe.DirectoryName ($exe.BaseName + '.sha256')
+          "${hash}  $($exe.Name)`n" | Set-Content -Path $checksumFile -Encoding ascii -NoNewline
+
+          $expectedAppx = "ErtCleaner-Store-$version.appx"
+          $appx = Get-ChildItem -Path dist -Filter 'ErtCleaner-Store-*.appx' -File
+          if ($appx.Count -ne 1) {
+            Write-Error "Expected exactly one Store package in dist, found $($appx.Count)"
+            exit 1
+          }
+          if ($appx.Name -ne $expectedAppx) {
+            Write-Error "Store package '$($appx.Name)' does not match '$expectedAppx'"
+            exit 1
+          }
+
+          $assetsDir = Join-Path $env:GITHUB_WORKSPACE 'release-assets'
+          if (Test-Path -LiteralPath $assetsDir) {
+            Remove-Item -LiteralPath $assetsDir -Recurse -Force
+          }
+          New-Item -ItemType Directory -Path $assetsDir | Out-Null
+          Copy-Item -LiteralPath $exe.FullName -Destination $assetsDir
+          Copy-Item -LiteralPath $checksumFile -Destination $assetsDir
+          Copy-Item -LiteralPath $appx.FullName -Destination $assetsDir
+          $sbom = Join-Path 'dist' "ErtCleaner-$version.cdx.json"
+          if (-not (Test-Path -LiteralPath $sbom)) {
+            Write-Error "SBOM missing: $sbom"
+            exit 1
+          }
+          Copy-Item -LiteralPath $sbom -Destination $assetsDir
+          Write-Host "Wrote $checksumFile"
+          Write-Host "$hash  $($exe.Name)"
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2
+        with:
+          files: |
+            release-assets/ErtCleaner-Setup-*.exe
+            release-assets/ErtCleaner-Setup-*.sha256
+            release-assets/ErtCleaner-Store-*.appx
+            release-assets/ErtCleaner-*.cdx.json
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          draft: false
