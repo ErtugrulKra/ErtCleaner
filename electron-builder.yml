@@ -34,7 +34,19 @@ win:
   icon: resources/icon.ico
   requestedExecutionLevel: requireAdministrator
 
-
+appx:
+  artifactName: ErtCleaner-Store-${version}.${ext}
+  displayName: ErtCleaner
+  languages:
+    - tr-TR
+  capabilities:
+    - runFullTrust
+    - internetClient
+  identityName: ErtugrulKara.ErtCleaner
+  publisher:  
+  publisherDisplayName: ErtugrulKara
+  applicationId: ErtCleaner
+  backgroundColor: "#18181b"
 
 nsis:
   oneClick: true
